@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -8,11 +7,14 @@ import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
 import SkillPathSelector from "@/components/SkillPathSelector";
+import ResourceViewer from "@/components/ResourceViewer";
 
 const SkillDetail = () => {
   const { id } = useParams();
   const [completedResources, setCompletedResources] = useState<string[]>([]);
   const [selectedPath, setSelectedPath] = useState<string | null>(null);
+  const [selectedResource, setSelectedResource] = useState<any>(null);
+  const [selectedStageResources, setSelectedStageResources] = useState<any[]>([]);
 
   // Mock data - in real app this would come from an API
   const getSkillData = (skillId: string) => {
@@ -184,6 +186,16 @@ const SkillDetail = () => {
                 difficulty: "Beginner"
               },
               {
+                id: "html-crash",
+                title: "HTML Crash Course",
+                type: "Video Tutorial",
+                provider: "Traversy Media",
+                duration: "1 hour",
+                description: "Quick introduction to HTML for beginners",
+                url: "https://www.youtube.com/watch?v=UB1O30fR-EE",
+                difficulty: "Beginner"
+              },
+              {
                 id: "css-basics",
                 title: "CSS Complete Course",
                 type: "Video Course",
@@ -192,6 +204,16 @@ const SkillDetail = () => {
                 description: "Master CSS styling, layouts, and responsive design",
                 url: "https://www.youtube.com/watch?v=1Rs2ND1ryYc",
                 difficulty: "Beginner"
+              },
+              {
+                id: "css-grid",
+                title: "CSS Grid Tutorial",
+                type: "Video Tutorial",
+                provider: "Web Dev Simplified",
+                duration: "2 hours",
+                description: "Learn CSS Grid for modern layouts",
+                url: "https://www.youtube.com/watch?v=9zBsdzdE4sM",
+                difficulty: "Intermediate"
               },
               {
                 id: "flexbox-guide",
@@ -222,6 +244,16 @@ const SkillDetail = () => {
                 difficulty: "Beginner"
               },
               {
+                id: "js-crash",
+                title: "JavaScript Crash Course",
+                type: "Video Tutorial",
+                provider: "Traversy Media",
+                duration: "1.5 hours",
+                description: "Modern JavaScript crash course for beginners",
+                url: "https://www.youtube.com/watch?v=hdI2bqOjy3c",
+                difficulty: "Beginner"
+              },
+              {
                 id: "js-dom",
                 title: "DOM Manipulation Tutorial",
                 type: "Video Course",
@@ -229,6 +261,16 @@ const SkillDetail = () => {
                 duration: "1.5 hours",
                 description: "Learn to manipulate HTML elements with JavaScript",
                 url: "https://www.youtube.com/watch?v=y17RuWkWdn8",
+                difficulty: "Intermediate"
+              },
+              {
+                id: "js-es6",
+                title: "Modern JavaScript ES6+",
+                type: "Video Tutorial",
+                provider: "Coding Addict",
+                duration: "3 hours",
+                description: "Learn modern JavaScript features and syntax",
+                url: "https://www.youtube.com/watch?v=NCwa_xi0Uuc",
                 difficulty: "Intermediate"
               }
             ]
@@ -248,6 +290,16 @@ const SkillDetail = () => {
                 description: "Complete React tutorial covering components, hooks, and state management",
                 url: "https://www.youtube.com/watch?v=bMknfKXIFA8",
                 difficulty: "Intermediate"
+              },
+              {
+                id: "react-crash",
+                title: "React Crash Course",
+                type: "Video Tutorial",
+                provider: "Traversy Media",
+                duration: "1.5 hours",
+                description: "Quick start guide to React development",
+                url: "https://www.youtube.com/watch?v=w7ejDZ8SWv8",
+                difficulty: "Beginner"
               },
               {
                 id: "react-hooks",
@@ -280,6 +332,16 @@ const SkillDetail = () => {
                 duration: "8.5 hours",
                 description: "Complete Node.js tutorial covering servers, APIs, and modules",
                 url: "https://www.youtube.com/watch?v=Oe421EPjeBE",
+                difficulty: "Beginner"
+              },
+              {
+                id: "nodejs-crash",
+                title: "Node.js Crash Course",
+                type: "Video Tutorial",
+                provider: "Traversy Media",
+                duration: "1 hour",
+                description: "Quick introduction to Node.js development",
+                url: "https://www.youtube.com/watch?v=fBNz5xF-Kx4",
                 difficulty: "Beginner"
               },
               {
@@ -486,6 +548,16 @@ const SkillDetail = () => {
     );
   };
 
+  const openResourceViewer = (resource: any, stageResources: any[]) => {
+    setSelectedResource(resource);
+    setSelectedStageResources(stageResources);
+  };
+
+  const closeResourceViewer = () => {
+    setSelectedResource(null);
+    setSelectedStageResources([]);
+  };
+
   const totalResources = roadmapStages.reduce((total, stage) => total + stage.resources.length, 0);
   const completedCount = completedResources.length;
   const progressPercentage = totalResources > 0 ? (completedCount / totalResources) * 100 : 0;
@@ -637,12 +709,22 @@ const SkillDetail = () => {
                                   <span>By {resource.provider}</span>
                                   <span>{resource.duration}</span>
                                 </div>
-                                <Button variant="outline" size="sm" asChild>
-                                  <a href={resource.url} target="_blank" rel="noopener noreferrer">
-                                    <ExternalLink className="w-4 h-4 mr-1" />
-                                    View Resource
-                                  </a>
-                                </Button>
+                                <div className="flex gap-2">
+                                  <Button 
+                                    variant="default" 
+                                    size="sm"
+                                    onClick={() => openResourceViewer(resource, stage.resources)}
+                                  >
+                                    <Play className="w-4 h-4 mr-1" />
+                                    Watch
+                                  </Button>
+                                  <Button variant="outline" size="sm" asChild>
+                                    <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                                      <ExternalLink className="w-4 h-4 mr-1" />
+                                      External
+                                    </a>
+                                  </Button>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -703,6 +785,16 @@ const SkillDetail = () => {
           </div>
         )}
       </div>
+
+      {/* Resource Viewer Modal */}
+      {selectedResource && (
+        <ResourceViewer
+          resource={selectedResource}
+          allResources={selectedStageResources}
+          onClose={closeResourceViewer}
+          onResourceChange={setSelectedResource}
+        />
+      )}
     </div>
   );
 };
