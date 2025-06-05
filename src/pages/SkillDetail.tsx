@@ -163,77 +163,316 @@ const SkillDetail = () => {
   const skill = getSkillData(id || "1");
 
   const getRoadmapStages = (skillId: string, pathId: string) => {
-    // Different roadmaps based on skill and path
-    if (skillId === "1" && pathId === "frontend") {
-      return [
-        {
-          id: "stage1",
-          title: "HTML & CSS Basics",
-          description: "Learn the foundation of web development",
-          duration: "3-4 weeks",
-          resources: [
-            {
-              id: "html-basics",
-              title: "HTML Fundamentals",
-              type: "Course",
-              provider: "FreeCodeCamp",
-              duration: "8 hours",
-              description: "Learn HTML structure, elements, and semantic markup",
-              url: "https://freecodecamp.org",
-              difficulty: "Beginner"
-            }
-          ]
-        }
-      ];
+    // Web Development roadmaps
+    if (skillId === "1") {
+      if (pathId === "frontend") {
+        return [
+          {
+            id: "stage1",
+            title: "HTML & CSS Fundamentals",
+            description: "Learn the foundation of web development",
+            duration: "3-4 weeks",
+            resources: [
+              {
+                id: "html-basics",
+                title: "HTML Full Course",
+                type: "Video Course",
+                provider: "FreeCodeCamp",
+                duration: "4.5 hours",
+                description: "Complete HTML tutorial covering all elements and semantic markup",
+                url: "https://www.youtube.com/watch?v=pQN-pnXPaVg",
+                difficulty: "Beginner"
+              },
+              {
+                id: "css-basics",
+                title: "CSS Complete Course",
+                type: "Video Course",
+                provider: "FreeCodeCamp",
+                duration: "11 hours",
+                description: "Master CSS styling, layouts, and responsive design",
+                url: "https://www.youtube.com/watch?v=1Rs2ND1ryYc",
+                difficulty: "Beginner"
+              },
+              {
+                id: "flexbox-guide",
+                title: "CSS Flexbox Guide",
+                type: "Interactive Tutorial",
+                provider: "CSS-Tricks",
+                duration: "2 hours",
+                description: "Complete guide to CSS Flexbox with examples",
+                url: "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
+                difficulty: "Beginner"
+              }
+            ]
+          },
+          {
+            id: "stage2",
+            title: "JavaScript Fundamentals",
+            description: "Master JavaScript programming basics",
+            duration: "4-5 weeks",
+            resources: [
+              {
+                id: "js-basics",
+                title: "JavaScript Full Course",
+                type: "Video Course",
+                provider: "FreeCodeCamp",
+                duration: "8 hours",
+                description: "Complete JavaScript course from basics to advanced concepts",
+                url: "https://www.youtube.com/watch?v=PkZNo7MFNFg",
+                difficulty: "Beginner"
+              },
+              {
+                id: "js-dom",
+                title: "DOM Manipulation Tutorial",
+                type: "Video Course",
+                provider: "Web Dev Simplified",
+                duration: "1.5 hours",
+                description: "Learn to manipulate HTML elements with JavaScript",
+                url: "https://www.youtube.com/watch?v=y17RuWkWdn8",
+                difficulty: "Intermediate"
+              }
+            ]
+          },
+          {
+            id: "stage3",
+            title: "React Development",
+            description: "Build dynamic user interfaces with React",
+            duration: "6-8 weeks",
+            resources: [
+              {
+                id: "react-basics",
+                title: "React Full Course",
+                type: "Video Course",
+                provider: "FreeCodeCamp",
+                duration: "12 hours",
+                description: "Complete React tutorial covering components, hooks, and state management",
+                url: "https://www.youtube.com/watch?v=bMknfKXIFA8",
+                difficulty: "Intermediate"
+              },
+              {
+                id: "react-hooks",
+                title: "React Hooks Tutorial",
+                type: "Video Course",
+                provider: "Codevolution",
+                duration: "3 hours",
+                description: "Master React Hooks for modern component development",
+                url: "https://www.youtube.com/watch?v=cF2lQ_gZeA8",
+                difficulty: "Intermediate"
+              }
+            ]
+          }
+        ];
+      }
+      
+      if (pathId === "backend") {
+        return [
+          {
+            id: "stage1",
+            title: "Node.js Fundamentals",
+            description: "Learn server-side JavaScript development",
+            duration: "3-4 weeks",
+            resources: [
+              {
+                id: "nodejs-basics",
+                title: "Node.js Full Course",
+                type: "Video Course",
+                provider: "FreeCodeCamp",
+                duration: "8.5 hours",
+                description: "Complete Node.js tutorial covering servers, APIs, and modules",
+                url: "https://www.youtube.com/watch?v=Oe421EPjeBE",
+                difficulty: "Beginner"
+              },
+              {
+                id: "express-tutorial",
+                title: "Express.js Tutorial",
+                type: "Video Course",
+                provider: "Programming with Mosh",
+                duration: "1 hour",
+                description: "Learn Express.js framework for building web applications",
+                url: "https://www.youtube.com/watch?v=pKd0Rpw7O48",
+                difficulty: "Beginner"
+              }
+            ]
+          },
+          {
+            id: "stage2",
+            title: "Database & APIs",
+            description: "Work with databases and create RESTful APIs",
+            duration: "4-5 weeks",
+            resources: [
+              {
+                id: "mongodb-tutorial",
+                title: "MongoDB Complete Course",
+                type: "Video Course",
+                provider: "FreeCodeCamp",
+                duration: "7 hours",
+                description: "Learn MongoDB database operations and integration",
+                url: "https://www.youtube.com/watch?v=c2M-rlkkT5o",
+                difficulty: "Intermediate"
+              },
+              {
+                id: "rest-api",
+                title: "REST API Tutorial",
+                type: "Video Course",
+                provider: "Web Dev Simplified",
+                duration: "2.5 hours",
+                description: "Build RESTful APIs with Node.js and Express",
+                url: "https://www.youtube.com/watch?v=fgTGADljAeg",
+                difficulty: "Intermediate"
+              }
+            ]
+          }
+        ];
+      }
     }
     
+    // Guitar roadmaps
     if (skillId === "4") {
-      return [
-        {
-          id: "stage1",
-          title: "Guitar Basics",
-          description: "Learn fundamental guitar techniques",
-          duration: "4-6 weeks",
-          resources: [
-            {
-              id: "guitar-basics",
-              title: "Basic Chords & Strumming",
-              type: "Video Course",
-              provider: "JustinGuitar",
-              duration: "10 hours",
-              description: "Learn your first chords and strumming patterns",
-              url: "https://justinguitar.com",
-              difficulty: "Beginner"
-            }
-          ]
-        }
-      ];
+      if (pathId === "acoustic") {
+        return [
+          {
+            id: "stage1",
+            title: "Guitar Basics",
+            description: "Learn fundamental guitar techniques",
+            duration: "4-6 weeks",
+            resources: [
+              {
+                id: "guitar-setup",
+                title: "Guitar Setup & Tuning",
+                type: "Video Tutorial",
+                provider: "JustinGuitar",
+                duration: "30 mins",
+                description: "Learn proper guitar setup, tuning, and basic maintenance",
+                url: "https://www.youtube.com/watch?v=BnMqAhWNyyM",
+                difficulty: "Beginner"
+              },
+              {
+                id: "first-chords",
+                title: "Your First Guitar Chords",
+                type: "Video Course",
+                provider: "JustinGuitar",
+                duration: "2 hours",
+                description: "Learn essential beginner chords: A, D, E, G, C",
+                url: "https://www.youtube.com/watch?v=NGXSoJPBFJo",
+                difficulty: "Beginner"
+              }
+            ]
+          },
+          {
+            id: "stage2",
+            title: "Strumming & Rhythm",
+            description: "Master basic strumming patterns and rhythm",
+            duration: "3-4 weeks",
+            resources: [
+              {
+                id: "strumming-patterns",
+                title: "Basic Strumming Patterns",
+                type: "Video Tutorial",
+                provider: "GuitarLessons365",
+                duration: "45 mins",
+                description: "Learn essential strumming patterns for popular songs",
+                url: "https://www.youtube.com/watch?v=oXerhAA_5Lk",
+                difficulty: "Beginner"
+              },
+              {
+                id: "rhythm-guitar",
+                title: "Rhythm Guitar Fundamentals",
+                type: "Video Course",
+                provider: "Marty Music",
+                duration: "1.5 hours",
+                description: "Develop timing and rhythm skills for acoustic guitar",
+                url: "https://www.youtube.com/watch?v=v0_PLs4xdwc",
+                difficulty: "Beginner"
+              }
+            ]
+          },
+          {
+            id: "stage3",
+            title: "Fingerpicking & Advanced Techniques",
+            description: "Learn fingerpicking and advanced acoustic techniques",
+            duration: "6-8 weeks",
+            resources: [
+              {
+                id: "fingerpicking-basics",
+                title: "Fingerpicking for Beginners",
+                type: "Video Course",
+                provider: "Steve Stine Guitar",
+                duration: "3 hours",
+                description: "Master fingerpicking technique and patterns",
+                url: "https://www.youtube.com/watch?v=NZWMrm8lDmA",
+                difficulty: "Intermediate"
+              }
+            ]
+          }
+        ];
+      }
     }
 
+    // Singing roadmaps
     if (skillId === "5") {
-      return [
-        {
-          id: "stage1",
-          title: "Vocal Basics",
-          description: "Learn proper breathing and vocal techniques",
-          duration: "3-4 weeks",
-          resources: [
-            {
-              id: "vocal-basics",
-              title: "Breathing & Posture",
-              type: "Video Course",
-              provider: "Vocal Coach",
-              duration: "6 hours",
-              description: "Master proper breathing techniques for singing",
-              url: "https://example.com",
-              difficulty: "Beginner"
-            }
-          ]
-        }
-      ];
+      if (pathId === "pop") {
+        return [
+          {
+            id: "stage1",
+            title: "Vocal Fundamentals",
+            description: "Learn proper breathing and vocal technique",
+            duration: "3-4 weeks",
+            resources: [
+              {
+                id: "breathing-technique",
+                title: "Proper Breathing for Singers",
+                type: "Video Tutorial",
+                provider: "Superior Singing Method",
+                duration: "1 hour",
+                description: "Master diaphragmatic breathing and breath support",
+                url: "https://www.youtube.com/watch?v=F6Noi7qzl3E",
+                difficulty: "Beginner"
+              },
+              {
+                id: "vocal-warmups",
+                title: "Daily Vocal Warm-ups",
+                type: "Video Tutorial",
+                provider: "Vocal Coach",
+                duration: "30 mins",
+                description: "Essential warm-up exercises to protect your voice",
+                url: "https://www.youtube.com/watch?v=9c6SzwB0tgg",
+                difficulty: "Beginner"
+              }
+            ]
+          },
+          {
+            id: "stage2",
+            title: "Pitch & Tone Development",
+            description: "Improve pitch accuracy and vocal tone",
+            duration: "4-5 weeks",
+            resources: [
+              {
+                id: "pitch-training",
+                title: "Pitch Training Exercises",
+                type: "Video Course",
+                provider: "New York Vocal Coaching",
+                duration: "2 hours",
+                description: "Develop perfect pitch and interval recognition",
+                url: "https://www.youtube.com/watch?v=m-l7TO01-Sg",
+                difficulty: "Intermediate"
+              },
+              {
+                id: "vocal-tone",
+                title: "Finding Your Voice",
+                type: "Video Tutorial",
+                provider: "Cheryl Porter Vocal Coach",
+                duration: "45 mins",
+                description: "Discover and develop your unique vocal tone",
+                url: "https://www.youtube.com/watch?v=R8OOWcsFj0A",
+                difficulty: "Intermediate"
+              }
+            ]
+          }
+        ];
+      }
     }
 
-    // Default roadmap
+    // Default empty roadmap
     return [];
   };
 
