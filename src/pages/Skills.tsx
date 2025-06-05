@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Search, Clock, Users, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Skills = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,7 +23,8 @@ const Skills = () => {
       duration: "3-6 months",
       rating: 4.8,
       color: "from-blue-500 to-purple-600",
-      tags: ["HTML", "CSS", "JavaScript", "React"]
+      tags: ["HTML", "CSS", "JavaScript", "React"],
+      hasPaths: true
     },
     {
       id: 2,
@@ -35,7 +37,8 @@ const Skills = () => {
       duration: "2-4 months",
       rating: 4.7,
       color: "from-green-500 to-teal-600",
-      tags: ["SEO", "Social Media", "Content Marketing", "Analytics"]
+      tags: ["SEO", "Social Media", "Content Marketing", "Analytics"],
+      hasPaths: true
     },
     {
       id: 3,
@@ -48,10 +51,39 @@ const Skills = () => {
       duration: "4-8 months",
       rating: 4.9,
       color: "from-yellow-500 to-orange-600",
-      tags: ["Python", "Data Science", "Automation", "Django"]
+      tags: ["Python", "Data Science", "Automation", "Django"],
+      hasPaths: true
     },
     {
       id: 4,
+      title: "Guitar Playing",
+      description: "Learn acoustic and electric guitar from beginner to advanced",
+      icon: "🎸",
+      category: "Music",
+      level: "Beginner",
+      students: "4.2k",
+      duration: "6-12 months",
+      rating: 4.6,
+      color: "from-amber-500 to-orange-600",
+      tags: ["Acoustic", "Electric", "Chords", "Scales"],
+      hasPaths: true
+    },
+    {
+      id: 5,
+      title: "Singing",
+      description: "Develop your vocal skills, breath control, and stage presence",
+      icon: "🎤",
+      category: "Music",
+      level: "Beginner",
+      students: "3.8k",
+      duration: "4-8 months",
+      rating: 4.7,
+      color: "from-pink-500 to-rose-600",
+      tags: ["Vocals", "Breath Control", "Performance", "Harmony"],
+      hasPaths: true
+    },
+    {
+      id: 6,
       title: "Graphic Design",
       description: "Master Photoshop, Illustrator, and design principles",
       icon: "🎨",
@@ -61,10 +93,11 @@ const Skills = () => {
       duration: "2-5 months",
       rating: 4.6,
       color: "from-pink-500 to-red-600",
-      tags: ["Photoshop", "Illustrator", "Design Theory", "Branding"]
+      tags: ["Photoshop", "Illustrator", "Design Theory", "Branding"],
+      hasPaths: true
     },
     {
-      id: 5,
+      id: 7,
       title: "Data Analysis",
       description: "Excel, SQL, and data visualization with Python/R",
       icon: "📊",
@@ -74,10 +107,11 @@ const Skills = () => {
       duration: "3-6 months",
       rating: 4.8,
       color: "from-purple-500 to-indigo-600",
-      tags: ["Excel", "SQL", "Python", "Tableau"]
+      tags: ["Excel", "SQL", "Python", "Tableau"],
+      hasPaths: true
     },
     {
-      id: 6,
+      id: 8,
       title: "Mobile App Development",
       description: "Build iOS and Android apps with React Native or Flutter",
       icon: "📱",
@@ -87,11 +121,12 @@ const Skills = () => {
       duration: "4-7 months",
       rating: 4.7,
       color: "from-cyan-500 to-blue-600",
-      tags: ["React Native", "Flutter", "iOS", "Android"]
+      tags: ["React Native", "Flutter", "iOS", "Android"],
+      hasPaths: true
     }
   ];
 
-  const categories = ["All", "Programming", "Marketing", "Design", "Data"];
+  const categories = ["All", "Programming", "Marketing", "Design", "Data", "Music"];
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filteredSkills = allSkills.filter(skill => {
@@ -102,20 +137,21 @@ const Skills = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
       {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+      <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-2">
               <div className="text-2xl">🌱</div>
-              <h1 className="text-xl font-bold text-gray-900">SkillSprout</h1>
+              <h1 className="text-xl font-bold text-gray-900 dark:text-white">SkillSprout</h1>
             </Link>
             <div className="flex items-center space-x-4">
               <Button variant="ghost">Browse Skills</Button>
               <Link to="/dashboard">
                 <Button variant="ghost">Dashboard</Button>
               </Link>
+              <ThemeToggle />
               <Button>Get Started</Button>
             </div>
           </div>
@@ -125,10 +161,10 @@ const Skills = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Choose Your Learning Path
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Discover structured roadmaps with curated free resources to master any skill you want.
           </p>
         </div>
@@ -142,7 +178,7 @@ const Skills = () => {
               placeholder="Search skills..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 py-3 text-lg"
+              className="pl-10 py-3 text-lg dark:bg-gray-800 dark:border-gray-700"
             />
           </div>
 
@@ -163,17 +199,17 @@ const Skills = () => {
         {/* Skills Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredSkills.map((skill) => (
-            <Card key={skill.id} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 overflow-hidden">
+            <Card key={skill.id} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 overflow-hidden dark:bg-gray-800">
               <div className={`h-2 bg-gradient-to-r ${skill.color}`}></div>
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between mb-3">
                   <div className="text-4xl">{skill.icon}</div>
                   <Badge variant="secondary">{skill.level}</Badge>
                 </div>
-                <CardTitle className="text-xl group-hover:text-blue-600 transition-colors">
+                <CardTitle className="text-xl group-hover:text-blue-600 transition-colors dark:text-white">
                   {skill.title}
                 </CardTitle>
-                <CardDescription className="text-gray-600 mb-3">
+                <CardDescription className="text-gray-600 dark:text-gray-300 mb-3">
                   {skill.description}
                 </CardDescription>
                 <div className="flex flex-wrap gap-1 mb-3">
@@ -185,7 +221,7 @@ const Skills = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 gap-4 text-sm text-gray-500 mb-4">
+                <div className="grid grid-cols-2 gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
                   <div className="flex items-center gap-1">
                     <Users className="w-4 h-4" />
                     {skill.students}
@@ -198,7 +234,7 @@ const Skills = () => {
                     <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     {skill.rating}
                   </div>
-                  <div className="text-gray-600 font-medium">{skill.category}</div>
+                  <div className="text-gray-600 dark:text-gray-300 font-medium">{skill.category}</div>
                 </div>
                 <Link to={`/skill/${skill.id}`}>
                   <Button className="w-full group-hover:bg-blue-600 transition-colors">
@@ -212,7 +248,7 @@ const Skills = () => {
 
         {filteredSkills.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-xl text-gray-500">No skills found matching your search.</p>
+            <p className="text-xl text-gray-500 dark:text-gray-400">No skills found matching your search.</p>
           </div>
         )}
       </div>
