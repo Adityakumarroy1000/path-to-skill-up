@@ -24,7 +24,9 @@ const Skills = () => {
       rating: 4.8,
       color: "from-blue-500 to-purple-600",
       tags: ["HTML", "CSS", "JavaScript", "React"],
-      hasPaths: true
+      hasPaths: true,
+      pathCount: 4,
+      specialFeatures: ["Project-based learning", "Industry mentors", "Job placement assistance"]
     },
     {
       id: 2,
@@ -38,7 +40,9 @@ const Skills = () => {
       rating: 4.7,
       color: "from-green-500 to-teal-600",
       tags: ["SEO", "Social Media", "Content Marketing", "Analytics"],
-      hasPaths: true
+      hasPaths: true,
+      pathCount: 5,
+      specialFeatures: ["Real campaign analysis", "Tools certification", "Client case studies"]
     },
     {
       id: 3,
@@ -52,7 +56,9 @@ const Skills = () => {
       rating: 4.9,
       color: "from-yellow-500 to-orange-600",
       tags: ["Python", "Data Science", "Automation", "Django"],
-      hasPaths: true
+      hasPaths: true,
+      pathCount: 6,
+      specialFeatures: ["Interactive coding", "AI/ML projects", "Open source contributions"]
     },
     {
       id: 4,
@@ -66,7 +72,9 @@ const Skills = () => {
       rating: 4.6,
       color: "from-amber-500 to-orange-600",
       tags: ["Acoustic", "Electric", "Chords", "Scales"],
-      hasPaths: true
+      hasPaths: true,
+      pathCount: 4,
+      specialFeatures: ["Live practice sessions", "Song tutorials", "Performance recording"]
     },
     {
       id: 5,
@@ -80,7 +88,9 @@ const Skills = () => {
       rating: 4.7,
       color: "from-pink-500 to-rose-600",
       tags: ["Vocals", "Breath Control", "Performance", "Harmony"],
-      hasPaths: true
+      hasPaths: true,
+      pathCount: 5,
+      specialFeatures: ["Voice analysis", "Live coaching", "Recording studio access"]
     },
     {
       id: 6,
@@ -94,7 +104,9 @@ const Skills = () => {
       rating: 4.6,
       color: "from-pink-500 to-red-600",
       tags: ["Photoshop", "Illustrator", "Design Theory", "Branding"],
-      hasPaths: true
+      hasPaths: true,
+      pathCount: 4,
+      specialFeatures: ["Design challenges", "Portfolio building", "Client projects"]
     },
     {
       id: 7,
@@ -108,7 +120,9 @@ const Skills = () => {
       rating: 4.8,
       color: "from-purple-500 to-indigo-600",
       tags: ["Excel", "SQL", "Python", "Tableau"],
-      hasPaths: true
+      hasPaths: true,
+      pathCount: 5,
+      specialFeatures: ["Real datasets", "Business cases", "Certification prep"]
     },
     {
       id: 8,
@@ -122,11 +136,77 @@ const Skills = () => {
       rating: 4.7,
       color: "from-cyan-500 to-blue-600",
       tags: ["React Native", "Flutter", "iOS", "Android"],
-      hasPaths: true
+      hasPaths: true,
+      pathCount: 3,
+      specialFeatures: ["App store deployment", "Cross-platform focus", "UI/UX integration"]
+    },
+    {
+      id: 9,
+      title: "Photography",
+      description: "Master composition, lighting, and post-processing techniques",
+      icon: "📷",
+      category: "Creative",
+      level: "Beginner",
+      students: "7.3k",
+      duration: "3-6 months",
+      rating: 4.5,
+      color: "from-indigo-500 to-blue-600",
+      tags: ["Composition", "Lighting", "Editing", "Portfolio"],
+      hasPaths: true,
+      pathCount: 6,
+      specialFeatures: ["Photo challenges", "Equipment guides", "Gallery showcases"]
+    },
+    {
+      id: 10,
+      title: "Cooking & Culinary Arts",
+      description: "Learn fundamental cooking techniques and international cuisines",
+      icon: "👨‍🍳",
+      category: "Lifestyle",
+      level: "Beginner",
+      students: "5.9k",
+      duration: "2-5 months",
+      rating: 4.4,
+      color: "from-orange-500 to-red-600",
+      tags: ["Techniques", "Cuisines", "Nutrition", "Presentation"],
+      hasPaths: true,
+      pathCount: 7,
+      specialFeatures: ["Recipe collection", "Video tutorials", "Nutrition guides"]
+    },
+    {
+      id: 11,
+      title: "Foreign Languages",
+      description: "Learn Spanish, French, German, or Japanese with interactive lessons",
+      icon: "🌍",
+      category: "Language",
+      level: "Beginner",
+      students: "11.2k",
+      duration: "6-12 months",
+      rating: 4.6,
+      color: "from-emerald-500 to-green-600",
+      tags: ["Grammar", "Vocabulary", "Conversation", "Culture"],
+      hasPaths: true,
+      pathCount: 8,
+      specialFeatures: ["Native speakers", "Cultural immersion", "Progress tracking"]
+    },
+    {
+      id: 12,
+      title: "Fitness & Personal Training",
+      description: "Build strength, endurance, and healthy lifestyle habits",
+      icon: "💪",
+      category: "Health",
+      level: "Beginner",
+      students: "9.7k",
+      duration: "3-9 months",
+      rating: 4.5,
+      color: "from-red-500 to-pink-600",
+      tags: ["Strength", "Cardio", "Nutrition", "Recovery"],
+      hasPaths: true,
+      pathCount: 6,
+      specialFeatures: ["Workout tracking", "Meal planning", "Progress photos"]
     }
   ];
 
-  const categories = ["All", "Programming", "Marketing", "Design", "Data", "Music"];
+  const categories = ["All", "Programming", "Marketing", "Design", "Data", "Music", "Creative", "Lifestyle", "Language", "Health"];
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filteredSkills = allSkills.filter(skill => {
@@ -204,7 +284,12 @@ const Skills = () => {
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between mb-3">
                   <div className="text-4xl">{skill.icon}</div>
-                  <Badge variant="secondary">{skill.level}</Badge>
+                  <div className="flex flex-col items-end gap-1">
+                    <Badge variant="secondary">{skill.level}</Badge>
+                    <Badge variant="outline" className="text-xs">
+                      {skill.pathCount} paths
+                    </Badge>
+                  </div>
                 </div>
                 <CardTitle className="text-xl group-hover:text-blue-600 transition-colors dark:text-white">
                   {skill.title}
@@ -218,6 +303,19 @@ const Skills = () => {
                       {tag}
                     </Badge>
                   ))}
+                </div>
+                
+                {/* Special Features */}
+                <div className="mb-3">
+                  <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">Special Features:</p>
+                  <div className="space-y-1">
+                    {skill.specialFeatures.slice(0, 2).map((feature, index) => (
+                      <div key={index} className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-400">
+                        <div className="w-1 h-1 bg-green-500 rounded-full"></div>
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </CardHeader>
               <CardContent>
