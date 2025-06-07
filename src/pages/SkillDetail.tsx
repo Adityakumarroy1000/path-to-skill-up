@@ -165,8 +165,6 @@ const SkillDetail = () => {
     return skills[skillId] || skills["1"]; // Default to web development
   };
 
-  const skill = getSkillData(id || "1");
-
   const getRoadmapStages = (skillId: string, pathId: string, language: string) => {
     // Web Development roadmaps
     if (skillId === "1") {
@@ -185,7 +183,7 @@ const SkillDetail = () => {
                 resources: [
                   {
                     id: "html-basics-video",
-                    title: "HTML Full Course",
+                    title: language === "bangla" ? "HTML সম্পূর্ণ কোর্স" : language === "hindi" ? "HTML पूरा कोर्स" : "HTML Full Course",
                     type: "Video Course",
                     provider: language === "bangla" ? "Programming Hero BD" : language === "hindi" ? "CodeWithHarry" : "FreeCodeCamp",
                     duration: language === "bangla" ? "5 hours" : language === "hindi" ? "6 hours" : "4.5 hours",
@@ -195,17 +193,17 @@ const SkillDetail = () => {
                   },
                   {
                     id: "html-basics-playlist",
-                    title: "HTML Learning Playlist",
+                    title: language === "bangla" ? "HTML শেখার প্লেলিস্ট" : language === "hindi" ? "HTML सीखने की प्लेलिस्ट" : "HTML Learning Playlist",
                     type: "Playlist",
                     provider: language === "bangla" ? "Anisul Islam" : language === "hindi" ? "Thapa Technical" : "Traversy Media",
                     duration: language === "bangla" ? "8 videos" : language === "hindi" ? "12 videos" : "10 videos",
-                    description: language === "bangla" ? "HTML শেখার জন্য সম্পূর্ণ প্লেলিস্ট" : language === "hindi" ? "HTML सीखने के लिए प्लेलिस্ট" : "Comprehensive HTML playlist for beginners",
+                    description: language === "bangla" ? "HTML শেখার জন্য সম্পূর্ণ প্লেলিস্ট" : language === "hindi" ? "HTML सीखने के लिए प्लेलिस्ट" : "Comprehensive HTML playlist for beginners",
                     url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLgH5QX0i9K3qzryglMjcyEktz4q7ySunX" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLwGdqUZWnOp00IbeN0OtL9dmnasipZ9x8" : "https://www.youtube.com/playlist?list=PLillGF-RfqbZTASqIqdvm1R5mLrQq79CU",
                     difficulty: "Beginner"
                   },
                   {
                     id: "html-basics-website",
-                    title: "Interactive HTML Tutorial",
+                    title: language === "bangla" ? "ইন্টারেক্টিভ HTML টিউটোরিয়াল" : language === "hindi" ? "इंटरैक्टिव HTML ट्यूटोरियल" : "Interactive HTML Tutorial",
                     type: "Website",
                     provider: language === "bangla" ? "W3Schools Bangla" : language === "hindi" ? "TutorialsPoint Hindi" : "W3Schools",
                     duration: "Self-paced",
@@ -215,7 +213,7 @@ const SkillDetail = () => {
                   },
                   {
                     id: "html-oneshot",
-                    title: "HTML One-Shot Tutorial",
+                    title: language === "bangla" ? "HTML ওয়ান-শট টিউটোরিয়াল" : language === "hindi" ? "HTML वन-शॉट ट्यूटोरियल" : "HTML One-Shot Tutorial",
                     type: "One-Shot",
                     provider: language === "bangla" ? "Stack Learner" : language === "hindi" ? "Code With Harry" : "Web Dev Simplified",
                     duration: language === "bangla" ? "3 hours" : language === "hindi" ? "2.5 hours" : "2 hours",
@@ -232,7 +230,7 @@ const SkillDetail = () => {
                 resources: [
                   {
                     id: "css-basics-video",
-                    title: "CSS Complete Course",
+                    title: language === "bangla" ? "CSS সম্পূর্ণ কোর্স" : language === "hindi" ? "CSS पूरा कोर्स" : "CSS Complete Course",
                     type: "Video Course",
                     provider: language === "bangla" ? "Programming Hero BD" : language === "hindi" ? "CodeWithHarry" : "FreeCodeCamp",
                     duration: language === "bangla" ? "8 hours" : language === "hindi" ? "9 hours" : "11 hours",
@@ -242,11 +240,11 @@ const SkillDetail = () => {
                   },
                   {
                     id: "css-playlist",
-                    title: "CSS Learning Playlist",
+                    title: language === "bangla" ? "CSS শেখার প্লেলিস্ট" : language === "hindi" ? "CSS सीखने की प्लेलिस्ट" : "CSS Learning Playlist",
                     type: "Playlist",
                     provider: language === "bangla" ? "Anisul Islam" : language === "hindi" ? "Thapa Technical" : "Kevin Powell",
                     duration: language === "bangla" ? "15 videos" : language === "hindi" ? "20 videos" : "25 videos",
-                    description: language === "bangla" ? "CSS শেখার সম্পূর্ণ প্লেলিস্ট" : language === "hindi" ? "CSS सीखने की प्लेलिस্ট" : "Advanced CSS techniques and best practices",
+                    description: language === "bangla" ? "CSS শেখার সম্পূর্ণ প্লেলিস্ট" : language === "hindi" ? "CSS सीखने की प्लेलिस्ट" : "Advanced CSS techniques and best practices",
                     url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLgH5QX0i9K3qjCBXjTmv7Xeh8MDUUVJDO" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLwGdqUZWnOp1j_ynK6N-eXJzWXJfRr0FI" : "https://www.youtube.com/playlist?list=PL4-IK0AVhVjP27yZLwW-gkPggRps0CCnP",
                     difficulty: "Intermediate"
                   },
@@ -277,7 +275,7 @@ const SkillDetail = () => {
                 resources: [
                   {
                     id: "js-basics-video",
-                    title: "JavaScript Full Course",
+                    title: language === "bangla" ? "জাভাস্ক্রিপ্ট সম্পূর্ণ কোর্স" : language === "hindi" ? "JavaScript पूरा कोर्स" : "JavaScript Full Course",
                     type: "Video Course",
                     provider: language === "bangla" ? "Programming Hero BD" : language === "hindi" ? "CodeWithHarry" : "FreeCodeCamp",
                     duration: language === "bangla" ? "10 hours" : language === "hindi" ? "12 hours" : "8 hours",
@@ -287,11 +285,11 @@ const SkillDetail = () => {
                   },
                   {
                     id: "js-playlist",
-                    title: "JavaScript Mastery Playlist",
+                    title: language === "bangla" ? "জাভাস্ক্রিপ্ট মাস্টারি প্লেলিস্ট" : language === "hindi" ? "JavaScript मास्टरी प्लेलिस्ट" : "JavaScript Mastery Playlist",
                     type: "Playlist",
                     provider: language === "bangla" ? "Learn with Sumit" : language === "hindi" ? "Chai aur Code" : "JavaScript Mastery",
                     duration: language === "bangla" ? "30 videos" : language === "hindi" ? "35 videos" : "40 videos",
-                    description: language === "bangla" ? "জাভাস্ক্রিপ্ট মাস্টারি প্লেলিস্ট" : language === "hindi" ? "JavaScript मास्टरी प्लेलिस্ট" : "Complete JavaScript mastery playlist",
+                    description: language === "bangla" ? "জাভাস্ক্রিপ্ট মাস্টারি প্লেলিস্ট" : language === "hindi" ? "JavaScript मास्टरी प्लेलिस्ट" : "Complete JavaScript mastery playlist",
                     url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLHiZ4m8vCp9OkrURufHpGUUTBjBNb-co-" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37" : "https://www.youtube.com/playlist?list=PL0Zuz27SZ-6N3bG4YZhkrCL3ZmDcLTuGd",
                     difficulty: "Intermediate"
                   },
@@ -307,7 +305,7 @@ const SkillDetail = () => {
                   },
                   {
                     id: "js-oneshot",
-                    title: "JavaScript in One Video",
+                    title: language === "bangla" ? "জাভাস্ক্রিপ্ট ওয়ান ভিডিও" : language === "hindi" ? "JavaScript एक वीडियो में" : "JavaScript in One Video",
                     type: "One-Shot",
                     provider: language === "bangla" ? "Stack Learner" : language === "hindi" ? "Chai aur Code" : "Programming with Mosh",
                     duration: language === "bangla" ? "4 hours" : language === "hindi" ? "3.5 hours" : "3 hours",
@@ -332,7 +330,7 @@ const SkillDetail = () => {
                 resources: [
                   {
                     id: "react-basics-video",
-                    title: "React Full Course",
+                    title: language === "bangla" ? "React সম্পূর্ণ কোর্স" : language === "hindi" ? "React पूरा कोर्स" : "React Full Course",
                     type: "Video Course",
                     provider: language === "bangla" ? "Programming Hero BD" : language === "hindi" ? "CodeWithHarry" : "FreeCodeCamp",
                     duration: language === "bangla" ? "15 hours" : language === "hindi" ? "14 hours" : "12 hours",
@@ -342,11 +340,11 @@ const SkillDetail = () => {
                   },
                   {
                     id: "react-playlist",
-                    title: "React Masterclass Playlist",
+                    title: language === "bangla" ? "React মাস্টারক্লাস প্লেলিস্ট" : language === "hindi" ? "React मास्टरक्लास प्लेलिस्ट" : "React Masterclass Playlist",
                     type: "Playlist",
                     provider: language === "bangla" ? "Learn with Sumit" : language === "hindi" ? "Thapa Technical" : "Codevolution",
                     duration: language === "bangla" ? "25 videos" : language === "hindi" ? "30 videos" : "35 videos",
-                    description: language === "bangla" ? "React মাস্টারক্লাস প্লেলিস্ট" : language === "hindi" ? "React मास्टारक्লাস प্লেলিস্ট" : "Comprehensive React learning playlist",
+                    description: language === "bangla" ? "React মাস্টারক্লাস প্লেলিস্ট" : language === "hindi" ? "React मास्टरक्लास प्लेलिस्ट" : "Comprehensive React learning playlist",
                     url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLHiZ4m8vCp9M6HVQv7a36cp8LKzyHIePr" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLwGdqUZWnOp3aROg4wypcRhZqJG3ajZWJ" : "https://www.youtube.com/playlist?list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3",
                     difficulty: "Intermediate"
                   },
@@ -374,64 +372,33 @@ const SkillDetail = () => {
             title: "Node.js Fundamentals",
             description: "Learn server-side JavaScript development",
             duration: "3-4 weeks",
-            resources: [
+            resourceGroups: [
               {
-                id: "nodejs-basics",
-                title: "Node.js Full Course",
-                type: "Video Course",
-                provider: "FreeCodeCamp",
-                duration: "8.5 hours",
-                description: "Complete Node.js tutorial covering servers, APIs, and modules",
-                url: "https://www.youtube.com/watch?v=Oe421EPjeBE",
-                difficulty: "Beginner"
-              },
-              {
-                id: "nodejs-crash",
-                title: "Node.js Crash Course",
-                type: "Video Tutorial",
-                provider: "Traversy Media",
-                duration: "1 hour",
-                description: "Quick introduction to Node.js development",
-                url: "https://www.youtube.com/watch?v=fBNz5xF-Kx4",
-                difficulty: "Beginner"
-              },
-              {
-                id: "express-tutorial",
-                title: "Express.js Tutorial",
-                type: "Video Course",
-                provider: "Programming with Mosh",
-                duration: "1 hour",
-                description: "Learn Express.js framework for building web applications",
-                url: "https://www.youtube.com/watch?v=pKd0Rpw7O48",
-                difficulty: "Beginner"
-              }
-            ]
-          },
-          {
-            id: "stage2",
-            title: "Database & APIs",
-            description: "Work with databases and create RESTful APIs",
-            duration: "4-5 weeks",
-            resources: [
-              {
-                id: "mongodb-tutorial",
-                title: "MongoDB Complete Course",
-                type: "Video Course",
-                provider: "FreeCodeCamp",
-                duration: "7 hours",
-                description: "Learn MongoDB database operations and integration",
-                url: "https://www.youtube.com/watch?v=c2M-rlkkT5o",
-                difficulty: "Intermediate"
-              },
-              {
-                id: "rest-api",
-                title: "REST API Tutorial",
-                type: "Video Course",
-                provider: "Web Dev Simplified",
-                duration: "2.5 hours",
-                description: "Build RESTful APIs with Node.js and Express",
-                url: "https://www.youtube.com/watch?v=fgTGADljAeg",
-                difficulty: "Intermediate"
+                id: "nodejs-group",
+                title: "Node.js Mastery",
+                description: "Master Node.js development",
+                resources: [
+                  {
+                    id: "nodejs-basics",
+                    title: language === "bangla" ? "Node.js সম্পূর্ণ কোর্স" : language === "hindi" ? "Node.js पूरा कोर्स" : "Node.js Full Course",
+                    type: "Video Course",
+                    provider: language === "bangla" ? "Programming Hero BD" : language === "hindi" ? "CodeWithHarry" : "FreeCodeCamp",
+                    duration: "8.5 hours",
+                    description: language === "bangla" ? "Node.js এর সম্পূর্ণ টিউটোরিয়াল" : language === "hindi" ? "Node.js का पूरा ट्यूटोरियल" : "Complete Node.js tutorial covering servers, APIs, and modules",
+                    url: "https://www.youtube.com/watch?v=Oe421EPjeBE",
+                    difficulty: "Beginner"
+                  },
+                  {
+                    id: "nodejs-crash",
+                    title: language === "bangla" ? "Node.js ক্র্যাশ কোর্স" : language === "hindi" ? "Node.js क्रैश कोर्स" : "Node.js Crash Course",
+                    type: "One-Shot",
+                    provider: "Traversy Media",
+                    duration: "1 hour",
+                    description: language === "bangla" ? "দ্রুত Node.js শেখার কোর্স" : language === "hindi" ? "तेज़ी से Node.js सीखें" : "Quick introduction to Node.js development",
+                    url: "https://www.youtube.com/watch?v=fBNz5xF-Kx4",
+                    difficulty: "Beginner"
+                  }
+                ]
               }
             ]
           }
@@ -448,72 +415,33 @@ const SkillDetail = () => {
             title: "Guitar Basics",
             description: "Learn fundamental guitar techniques",
             duration: "4-6 weeks",
-            resources: [
+            resourceGroups: [
               {
-                id: "guitar-setup",
-                title: "Guitar Setup & Tuning",
-                type: "Video Tutorial",
-                provider: "JustinGuitar",
-                duration: "30 mins",
-                description: "Learn proper guitar setup, tuning, and basic maintenance",
-                url: "https://www.youtube.com/watch?v=BnMqAhWNyyM",
-                difficulty: "Beginner"
-              },
-              {
-                id: "first-chords",
-                title: "Your First Guitar Chords",
-                type: "Video Course",
-                provider: "JustinGuitar",
-                duration: "2 hours",
-                description: "Learn essential beginner chords: A, D, E, G, C",
-                url: "https://www.youtube.com/watch?v=NGXSoJPBFJo",
-                difficulty: "Beginner"
-              }
-            ]
-          },
-          {
-            id: "stage2",
-            title: "Strumming & Rhythm",
-            description: "Master basic strumming patterns and rhythm",
-            duration: "3-4 weeks",
-            resources: [
-              {
-                id: "strumming-patterns",
-                title: "Basic Strumming Patterns",
-                type: "Video Tutorial",
-                provider: "GuitarLessons365",
-                duration: "45 mins",
-                description: "Learn essential strumming patterns for popular songs",
-                url: "https://www.youtube.com/watch?v=oXerhAA_5Lk",
-                difficulty: "Beginner"
-              },
-              {
-                id: "rhythm-guitar",
-                title: "Rhythm Guitar Fundamentals",
-                type: "Video Course",
-                provider: "Marty Music",
-                duration: "1.5 hours",
-                description: "Develop timing and rhythm skills for acoustic guitar",
-                url: "https://www.youtube.com/watch?v=v0_PLs4xdwc",
-                difficulty: "Beginner"
-              }
-            ]
-          },
-          {
-            id: "stage3",
-            title: "Fingerpicking & Advanced Techniques",
-            description: "Learn fingerpicking and advanced acoustic techniques",
-            duration: "6-8 weeks",
-            resources: [
-              {
-                id: "fingerpicking-basics",
-                title: "Fingerpicking for Beginners",
-                type: "Video Course",
-                provider: "Steve Stine Guitar",
-                duration: "3 hours",
-                description: "Master fingerpicking technique and patterns",
-                url: "https://www.youtube.com/watch?v=NZWMrm8lDmA",
-                difficulty: "Intermediate"
+                id: "guitar-basics-group",
+                title: "Guitar Fundamentals",
+                description: "Essential guitar skills for beginners",
+                resources: [
+                  {
+                    id: "guitar-setup",
+                    title: "Guitar Setup & Tuning",
+                    type: "Video Tutorial",
+                    provider: "JustinGuitar",
+                    duration: "30 mins",
+                    description: "Learn proper guitar setup, tuning, and basic maintenance",
+                    url: "https://www.youtube.com/watch?v=BnMqAhWNyyM",
+                    difficulty: "Beginner"
+                  },
+                  {
+                    id: "first-chords",
+                    title: "Your First Guitar Chords",
+                    type: "Video Course",
+                    provider: "JustinGuitar",
+                    duration: "2 hours",
+                    description: "Learn essential beginner chords: A, D, E, G, C",
+                    url: "https://www.youtube.com/watch?v=NGXSoJPBFJo",
+                    difficulty: "Beginner"
+                  }
+                ]
               }
             ]
           }
@@ -530,54 +458,33 @@ const SkillDetail = () => {
             title: "Vocal Fundamentals",
             description: "Learn proper breathing and vocal technique",
             duration: "3-4 weeks",
-            resources: [
+            resourceGroups: [
               {
-                id: "breathing-technique",
-                title: "Proper Breathing for Singers",
-                type: "Video Tutorial",
-                provider: "Superior Singing Method",
-                duration: "1 hour",
-                description: "Master diaphragmatic breathing and breath support",
-                url: "https://www.youtube.com/watch?v=F6Noi7qzl3E",
-                difficulty: "Beginner"
-              },
-              {
-                id: "vocal-warmups",
-                title: "Daily Vocal Warm-ups",
-                type: "Video Tutorial",
-                provider: "Vocal Coach",
-                duration: "30 mins",
-                description: "Essential warm-up exercises to protect your voice",
-                url: "https://www.youtube.com/watch?v=9c6SzwB0tgg",
-                difficulty: "Beginner"
-              }
-            ]
-          },
-          {
-            id: "stage2",
-            title: "Pitch & Tone Development",
-            description: "Improve pitch accuracy and vocal tone",
-            duration: "4-5 weeks",
-            resources: [
-              {
-                id: "pitch-training",
-                title: "Pitch Training Exercises",
-                type: "Video Course",
-                provider: "New York Vocal Coaching",
-                duration: "2 hours",
-                description: "Develop perfect pitch and interval recognition",
-                url: "https://www.youtube.com/watch?v=m-l7TO01-Sg",
-                difficulty: "Intermediate"
-              },
-              {
-                id: "vocal-tone",
-                title: "Finding Your Voice",
-                type: "Video Tutorial",
-                provider: "Cheryl Porter Vocal Coach",
-                duration: "45 mins",
-                description: "Discover and develop your unique vocal tone",
-                url: "https://www.youtube.com/watch?v=R8OOWcsFj0A",
-                difficulty: "Intermediate"
+                id: "vocal-basics-group",
+                title: "Vocal Fundamentals",
+                description: "Essential vocal techniques for beginners",
+                resources: [
+                  {
+                    id: "breathing-technique",
+                    title: "Proper Breathing for Singers",
+                    type: "Video Tutorial",
+                    provider: "Superior Singing Method",
+                    duration: "1 hour",
+                    description: "Master diaphragmatic breathing and breath support",
+                    url: "https://www.youtube.com/watch?v=F6Noi7qzl3E",
+                    difficulty: "Beginner"
+                  },
+                  {
+                    id: "vocal-warmups",
+                    title: "Daily Vocal Warm-ups",
+                    type: "Video Tutorial",
+                    provider: "Vocal Coach",
+                    duration: "30 mins",
+                    description: "Essential warm-up exercises to protect your voice",
+                    url: "https://www.youtube.com/watch?v=9c6SzwB0tgg",
+                    difficulty: "Beginner"
+                  }
+                ]
               }
             ]
           }
@@ -589,6 +496,7 @@ const SkillDetail = () => {
     return [];
   };
 
+  const skill = getSkillData(id || "1");
   const roadmapStages = selectedPath ? getRoadmapStages(id || "1", selectedPath, selectedLanguage) : [];
 
   const toggleResourceCompletion = (resourceId: string) => {
@@ -647,6 +555,8 @@ const SkillDetail = () => {
 
   const handleLanguageChange = (newLanguage: string) => {
     setSelectedLanguage(newLanguage);
+    // Clear expanded groups when language changes to refresh the content
+    setExpandedResourceGroups([]);
   };
 
   const getLanguageDisplay = (lang: string) => {
