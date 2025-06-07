@@ -8,6 +8,7 @@ import { useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
 import SkillPathSelector from "@/components/SkillPathSelector";
 import ResourceViewer from "@/components/ResourceViewer";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const SkillDetail = () => {
   const { id } = useParams();
@@ -16,6 +17,7 @@ const SkillDetail = () => {
   const [selectedLanguage, setSelectedLanguage] = useState<string>("english");
   const [selectedResource, setSelectedResource] = useState<any>(null);
   const [selectedStageResources, setSelectedStageResources] = useState<any[]>([]);
+  const [expandedResourceGroups, setExpandedResourceGroups] = useState<string[]>([]);
 
   // Mock data - in real app this would come from an API
   const getSkillData = (skillId: string) => {
@@ -175,66 +177,90 @@ const SkillDetail = () => {
             title: "HTML & CSS Fundamentals",
             description: "Learn the foundation of web development",
             duration: "3-4 weeks",
-            resources: [
+            resourceGroups: [
               {
-                id: "html-basics-video",
-                title: "HTML Full Course",
-                type: "Video Course",
-                provider: language === "bangla" ? "Programming Hero BD" : language === "hindi" ? "CodeWithHarry" : "FreeCodeCamp",
-                duration: language === "bangla" ? "5 hours" : language === "hindi" ? "6 hours" : "4.5 hours",
-                description: language === "bangla" ? "সম্পূর্ণ HTML টিউটোরিয়াল বাংলায়" : language === "hindi" ? "हिंदी में HTML कोर्स" : "Complete HTML tutorial covering all elements and semantic markup",
-                url: language === "bangla" ? "https://www.youtube.com/watch?v=MdlDb_uJlYs" : language === "hindi" ? "https://www.youtube.com/watch?v=BsDoLVMnmZs" : "https://www.youtube.com/watch?v=pQN-pnXPaVg",
-                difficulty: "Beginner"
+                id: "html-group",
+                title: "HTML Mastery",
+                description: "Master HTML with various learning formats",
+                resources: [
+                  {
+                    id: "html-basics-video",
+                    title: "HTML Full Course",
+                    type: "Video Course",
+                    provider: language === "bangla" ? "Programming Hero BD" : language === "hindi" ? "CodeWithHarry" : "FreeCodeCamp",
+                    duration: language === "bangla" ? "5 hours" : language === "hindi" ? "6 hours" : "4.5 hours",
+                    description: language === "bangla" ? "সম্পূর্ণ HTML টিউটোরিয়াল বাংলায়" : language === "hindi" ? "हिंदी में HTML कोर्स" : "Complete HTML tutorial covering all elements and semantic markup",
+                    url: language === "bangla" ? "https://www.youtube.com/watch?v=MdlDb_uJlYs" : language === "hindi" ? "https://www.youtube.com/watch?v=BsDoLVMnmZs" : "https://www.youtube.com/watch?v=pQN-pnXPaVg",
+                    difficulty: "Beginner"
+                  },
+                  {
+                    id: "html-basics-playlist",
+                    title: "HTML Learning Playlist",
+                    type: "Playlist",
+                    provider: language === "bangla" ? "Anisul Islam" : language === "hindi" ? "Thapa Technical" : "Traversy Media",
+                    duration: language === "bangla" ? "8 videos" : language === "hindi" ? "12 videos" : "10 videos",
+                    description: language === "bangla" ? "HTML শেখার জন্য সম্পূর্ণ প্লেলিস্ট" : language === "hindi" ? "HTML सीखने के लिए प्लेलिस্ট" : "Comprehensive HTML playlist for beginners",
+                    url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLgH5QX0i9K3qzryglMjcyEktz4q7ySunX" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLwGdqUZWnOp00IbeN0OtL9dmnasipZ9x8" : "https://www.youtube.com/playlist?list=PLillGF-RfqbZTASqIqdvm1R5mLrQq79CU",
+                    difficulty: "Beginner"
+                  },
+                  {
+                    id: "html-basics-website",
+                    title: "Interactive HTML Tutorial",
+                    type: "Website",
+                    provider: language === "bangla" ? "W3Schools Bangla" : language === "hindi" ? "TutorialsPoint Hindi" : "W3Schools",
+                    duration: "Self-paced",
+                    description: language === "bangla" ? "ইন্টারেক্টিভ HTML টিউটোরিয়াল" : language === "hindi" ? "इंटरैक्टिव HTML ट्यूटोरियल" : "Interactive HTML learning with examples",
+                    url: "https://www.w3schools.com/html/",
+                    difficulty: "Beginner"
+                  },
+                  {
+                    id: "html-oneshot",
+                    title: "HTML One-Shot Tutorial",
+                    type: "One-Shot",
+                    provider: language === "bangla" ? "Stack Learner" : language === "hindi" ? "Code With Harry" : "Web Dev Simplified",
+                    duration: language === "bangla" ? "3 hours" : language === "hindi" ? "2.5 hours" : "2 hours",
+                    description: language === "bangla" ? "এক ভিডিওতে HTML শিখুন" : language === "hindi" ? "एक वीडियो में HTML सीखें" : "Learn HTML in one comprehensive video",
+                    url: language === "bangla" ? "https://www.youtube.com/watch?v=VKb_x83hZfE" : language === "hindi" ? "https://www.youtube.com/watch?v=BsDoLVMnmZs" : "https://www.youtube.com/watch?v=UB1O30fR-EE",
+                    difficulty: "Beginner"
+                  }
+                ]
               },
               {
-                id: "html-basics-playlist",
-                title: "HTML Learning Playlist",
-                type: "Playlist",
-                provider: language === "bangla" ? "Anisul Islam" : language === "hindi" ? "Thapa Technical" : "Traversy Media",
-                duration: language === "bangla" ? "8 videos" : language === "hindi" ? "12 videos" : "10 videos",
-                description: language === "bangla" ? "HTML শেখার জন্য সম্পূর্ণ প্লেলিস্ট" : language === "hindi" ? "HTML सीखने के लिए प्लेलिस्ट" : "Comprehensive HTML playlist for beginners",
-                url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLgH5QX0i9K3qzryglMjcyEktz4q7ySunX" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLwGdqUZWnOp00IbeN0OtL9dmnasipZ9x8" : "https://www.youtube.com/playlist?list=PLillGF-RfqbZTASqIqdvm1R5mLrQq79CU",
-                difficulty: "Beginner"
-              },
-              {
-                id: "html-basics-website",
-                title: "Interactive HTML Tutorial",
-                type: "Website",
-                provider: language === "bangla" ? "W3Schools Bangla" : language === "hindi" ? "TutorialsPoint Hindi" : "W3Schools",
-                duration: "Self-paced",
-                description: language === "bangla" ? "ইন্টারেক্টিভ HTML টিউটোরিয়াল" : language === "hindi" ? "इंटरैक्टिव HTML ट्यूटोरियल" : "Interactive HTML learning with examples",
-                url: "https://www.w3schools.com/html/",
-                difficulty: "Beginner"
-              },
-              {
-                id: "html-oneshot",
-                title: "HTML One-Shot Tutorial",
-                type: "One-Shot",
-                provider: language === "bangla" ? "Stack Learner" : language === "hindi" ? "Code With Harry" : "Web Dev Simplified",
-                duration: language === "bangla" ? "3 hours" : language === "hindi" ? "2.5 hours" : "2 hours",
-                description: language === "bangla" ? "এক ভিডিওতে HTML শিখুন" : language === "hindi" ? "एक वीडियो में HTML सीखें" : "Learn HTML in one comprehensive video",
-                url: language === "bangla" ? "https://www.youtube.com/watch?v=VKb_x83hZfE" : language === "hindi" ? "https://www.youtube.com/watch?v=BsDoLVMnmZs" : "https://www.youtube.com/watch?v=UB1O30fR-EE",
-                difficulty: "Beginner"
-              },
-              {
-                id: "css-basics-video",
-                title: "CSS Complete Course",
-                type: "Video Course",
-                provider: language === "bangla" ? "Programming Hero BD" : language === "hindi" ? "CodeWithHarry" : "FreeCodeCamp",
-                duration: language === "bangla" ? "8 hours" : language === "hindi" ? "9 hours" : "11 hours",
-                description: language === "bangla" ? "CSS এর সম্পূর্ণ কোর্স বাংলায়" : language === "hindi" ? "हिंदी में CSS कोर्स" : "Master CSS styling, layouts, and responsive design",
-                url: language === "bangla" ? "https://www.youtube.com/watch?v=OXGznpKZ_sA" : language === "hindi" ? "https://www.youtube.com/watch?v=u5-K_ua9sOw" : "https://www.youtube.com/watch?v=1Rs2ND1ryYc",
-                difficulty: "Beginner"
-              },
-              {
-                id: "css-playlist",
-                title: "CSS Learning Playlist",
-                type: "Playlist",
-                provider: language === "bangla" ? "Anisul Islam" : language === "hindi" ? "Thapa Technical" : "Kevin Powell",
-                duration: language === "bangla" ? "15 videos" : language === "hindi" ? "20 videos" : "25 videos",
-                description: language === "bangla" ? "CSS শেখার সম্পূর্ণ প্লেলিস্ট" : language === "hindi" ? "CSS सीखने की प्लेलिस्ट" : "Advanced CSS techniques and best practices",
-                url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLgH5QX0i9K3qjCBXjTmv7Xeh8MDUUVJDO" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLwGdqUZWnOp1j_ynK6N-eXJzWXJfRr0FI" : "https://www.youtube.com/playlist?list=PL4-IK0AVhVjP27yZLwW-gkPggRps0CCnP",
-                difficulty: "Intermediate"
+                id: "css-group",
+                title: "CSS Mastery",
+                description: "Master CSS styling and layouts",
+                resources: [
+                  {
+                    id: "css-basics-video",
+                    title: "CSS Complete Course",
+                    type: "Video Course",
+                    provider: language === "bangla" ? "Programming Hero BD" : language === "hindi" ? "CodeWithHarry" : "FreeCodeCamp",
+                    duration: language === "bangla" ? "8 hours" : language === "hindi" ? "9 hours" : "11 hours",
+                    description: language === "bangla" ? "CSS এর সম্পূর্ণ কোর্স বাংলায়" : language === "hindi" ? "हिंदी में CSS कोर्स" : "Master CSS styling, layouts, and responsive design",
+                    url: language === "bangla" ? "https://www.youtube.com/watch?v=OXGznpKZ_sA" : language === "hindi" ? "https://www.youtube.com/watch?v=u5-K_ua9sOw" : "https://www.youtube.com/watch?v=1Rs2ND1ryYc",
+                    difficulty: "Beginner"
+                  },
+                  {
+                    id: "css-playlist",
+                    title: "CSS Learning Playlist",
+                    type: "Playlist",
+                    provider: language === "bangla" ? "Anisul Islam" : language === "hindi" ? "Thapa Technical" : "Kevin Powell",
+                    duration: language === "bangla" ? "15 videos" : language === "hindi" ? "20 videos" : "25 videos",
+                    description: language === "bangla" ? "CSS শেখার সম্পূর্ণ প্লেলিস্ট" : language === "hindi" ? "CSS सीखने की प्लेलिस্ট" : "Advanced CSS techniques and best practices",
+                    url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLgH5QX0i9K3qjCBXjTmv7Xeh8MDUUVJDO" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLwGdqUZWnOp1j_ynK6N-eXJzWXJfRr0FI" : "https://www.youtube.com/playlist?list=PL4-IK0AVhVjP27yZLwW-gkPggRps0CCnP",
+                    difficulty: "Intermediate"
+                  },
+                  {
+                    id: "css-website",
+                    title: "CSS Reference Guide",
+                    type: "Website",
+                    provider: "MDN Web Docs",
+                    duration: "Self-paced",
+                    description: language === "bangla" ? "CSS রেফারেন্স গাইড" : language === "hindi" ? "CSS रेफरेंस गाइड" : "Complete CSS reference and tutorials",
+                    url: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+                    difficulty: "All Levels"
+                  }
+                ]
               }
             ]
           },
@@ -243,46 +269,53 @@ const SkillDetail = () => {
             title: "JavaScript Fundamentals",
             description: "Master JavaScript programming basics",
             duration: "4-5 weeks",
-            resources: [
+            resourceGroups: [
               {
-                id: "js-basics-video",
-                title: "JavaScript Full Course",
-                type: "Video Course",
-                provider: language === "bangla" ? "Programming Hero BD" : language === "hindi" ? "CodeWithHarry" : "FreeCodeCamp",
-                duration: language === "bangla" ? "10 hours" : language === "hindi" ? "12 hours" : "8 hours",
-                description: language === "bangla" ? "জাভাস্ক্রিপ্ট এর সম্পূর্ণ কোর্স" : language === "hindi" ? "JavaScript का पूरा कोर्स" : "Complete JavaScript course from basics to advanced concepts",
-                url: language === "bangla" ? "https://www.youtube.com/watch?v=rePN-VFo1Eo" : language === "hindi" ? "https://www.youtube.com/watch?v=hKB-YGF14SY" : "https://www.youtube.com/watch?v=PkZNo7MFNFg",
-                difficulty: "Beginner"
-              },
-              {
-                id: "js-playlist",
-                title: "JavaScript Mastery Playlist",
-                type: "Playlist",
-                provider: language === "bangla" ? "Learn with Sumit" : language === "hindi" ? "Chai aur Code" : "JavaScript Mastery",
-                duration: language === "bangla" ? "30 videos" : language === "hindi" ? "35 videos" : "40 videos",
-                description: language === "bangla" ? "জাভাস্ক্রিপ্ট মাস্টারি প্লेलিস্ট" : language === "hindi" ? "JavaScript मास्टरी प्लेलिस्ट" : "Complete JavaScript mastery playlist",
-                url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLHiZ4m8vCp9OkrURufHpGUUTBjBNb-co-" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37" : "https://www.youtube.com/playlist?list=PL0Zuz27SZ-6N3bG4YZhkrCL3ZmDcLTuGd",
-                difficulty: "Intermediate"
-              },
-              {
-                id: "js-website",
-                title: "JavaScript MDN Docs",
-                type: "Website",
-                provider: "Mozilla Developer Network",
-                duration: "Self-paced",
-                description: language === "bangla" ? "জাভাস্ক্রিপ্ট ডকুমেন্টেশন" : language === "hindi" ? "JavaScript डॉक्यूमेंटेशन" : "Official JavaScript documentation and guides",
-                url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-                difficulty: "All Levels"
-              },
-              {
-                id: "js-oneshot",
-                title: "JavaScript in One Video",
-                type: "One-Shot",
-                provider: language === "bangla" ? "Stack Learner" : language === "hindi" ? "Chai aur Code" : "Programming with Mosh",
-                duration: language === "bangla" ? "4 hours" : language === "hindi" ? "3.5 hours" : "3 hours",
-                description: language === "bangla" ? "এক ভিডিওতে জাভাস্ক্রিপ্ট" : language === "hindi" ? "एक वीडियो में JavaScript" : "Learn JavaScript fundamentals in one video",
-                url: language === "bangla" ? "https://www.youtube.com/watch?v=rePN-VFo1Eo" : language === "hindi" ? "https://www.youtube.com/watch?v=chx9Rs41W6g" : "https://www.youtube.com/watch?v=hdI2bqOjy3c",
-                difficulty: "Beginner"
+                id: "js-group",
+                title: "JavaScript Mastery",
+                description: "Learn JavaScript from basics to advanced",
+                resources: [
+                  {
+                    id: "js-basics-video",
+                    title: "JavaScript Full Course",
+                    type: "Video Course",
+                    provider: language === "bangla" ? "Programming Hero BD" : language === "hindi" ? "CodeWithHarry" : "FreeCodeCamp",
+                    duration: language === "bangla" ? "10 hours" : language === "hindi" ? "12 hours" : "8 hours",
+                    description: language === "bangla" ? "জাভাস্ক্রিপ্ট এর সম্পূর্ণ কোর্স" : language === "hindi" ? "JavaScript का पूरा कोर्स" : "Complete JavaScript course from basics to advanced concepts",
+                    url: language === "bangla" ? "https://www.youtube.com/watch?v=rePN-VFo1Eo" : language === "hindi" ? "https://www.youtube.com/watch?v=hKB-YGF14SY" : "https://www.youtube.com/watch?v=PkZNo7MFNFg",
+                    difficulty: "Beginner"
+                  },
+                  {
+                    id: "js-playlist",
+                    title: "JavaScript Mastery Playlist",
+                    type: "Playlist",
+                    provider: language === "bangla" ? "Learn with Sumit" : language === "hindi" ? "Chai aur Code" : "JavaScript Mastery",
+                    duration: language === "bangla" ? "30 videos" : language === "hindi" ? "35 videos" : "40 videos",
+                    description: language === "bangla" ? "জাভাস্ক্রিপ্ট মাস্টারি প্লেলিস্ট" : language === "hindi" ? "JavaScript मास्टरी प्लेलिस্ট" : "Complete JavaScript mastery playlist",
+                    url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLHiZ4m8vCp9OkrURufHpGUUTBjBNb-co-" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37" : "https://www.youtube.com/playlist?list=PL0Zuz27SZ-6N3bG4YZhkrCL3ZmDcLTuGd",
+                    difficulty: "Intermediate"
+                  },
+                  {
+                    id: "js-website",
+                    title: "JavaScript MDN Docs",
+                    type: "Website",
+                    provider: "Mozilla Developer Network",
+                    duration: "Self-paced",
+                    description: language === "bangla" ? "জাভাস্ক্রিপ্ট ডকুমেন্টেশন" : language === "hindi" ? "JavaScript डॉक्यूमेंटेशन" : "Official JavaScript documentation and guides",
+                    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+                    difficulty: "All Levels"
+                  },
+                  {
+                    id: "js-oneshot",
+                    title: "JavaScript in One Video",
+                    type: "One-Shot",
+                    provider: language === "bangla" ? "Stack Learner" : language === "hindi" ? "Chai aur Code" : "Programming with Mosh",
+                    duration: language === "bangla" ? "4 hours" : language === "hindi" ? "3.5 hours" : "3 hours",
+                    description: language === "bangla" ? "এক ভিডিওতে জাভাস্ক্রিপ্ট" : language === "hindi" ? "एक वीडियो में JavaScript" : "Learn JavaScript fundamentals in one video",
+                    url: language === "bangla" ? "https://www.youtube.com/watch?v=rePN-VFo1Eo" : language === "hindi" ? "https://www.youtube.com/watch?v=chx9Rs41W6g" : "https://www.youtube.com/watch?v=hdI2bqOjy3c",
+                    difficulty: "Beginner"
+                  }
+                ]
               }
             ]
           },
@@ -291,36 +324,43 @@ const SkillDetail = () => {
             title: "React Development",
             description: "Build dynamic user interfaces with React",
             duration: "6-8 weeks",
-            resources: [
+            resourceGroups: [
               {
-                id: "react-basics-video",
-                title: "React Full Course",
-                type: "Video Course",
-                provider: language === "bangla" ? "Programming Hero BD" : language === "hindi" ? "CodeWithHarry" : "FreeCodeCamp",
-                duration: language === "bangla" ? "15 hours" : language === "hindi" ? "14 hours" : "12 hours",
-                description: language === "bangla" ? "React এর সম্পূর্ণ কোর্স বাংলায়" : language === "hindi" ? "React का पूरा कोर्स हिंदी में" : "Complete React tutorial covering components, hooks, and state management",
-                url: language === "bangla" ? "https://www.youtube.com/watch?v=6RhOzQciVwI" : language === "hindi" ? "https://www.youtube.com/watch?v=RGKi6LSPDLU" : "https://www.youtube.com/watch?v=bMknfKXIFA8",
-                difficulty: "Intermediate"
-              },
-              {
-                id: "react-playlist",
-                title: "React Masterclass Playlist",
-                type: "Playlist",
-                provider: language === "bangla" ? "Learn with Sumit" : language === "hindi" ? "Thapa Technical" : "Codevolution",
-                duration: language === "bangla" ? "25 videos" : language === "hindi" ? "30 videos" : "35 videos",
-                description: language === "bangla" ? "React মাস্টারক্লাস প্লेलিস্ট" : language === "hindi" ? "React मास्टারক্লাস प्लेलिस्ट" : "Comprehensive React learning playlist",
-                url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLHiZ4m8vCp9M6HVQv7a36cp8LKzyHIePr" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLwGdqUZWnOp3aROg4wypcRhZqJG3ajZWJ" : "https://www.youtube.com/playlist?list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3",
-                difficulty: "Intermediate"
-              },
-              {
-                id: "react-website",
-                title: "Official React Documentation",
-                type: "Website",
-                provider: "React Team",
-                duration: "Self-paced",
-                description: language === "bangla" ? "অফিসিয়াল React ডকুমেন্টেশন" : language === "hindi" ? "आधिकारिक React डॉक्यूमेंटेशन" : "Official React documentation with interactive examples",
-                url: "https://react.dev/",
-                difficulty: "All Levels"
+                id: "react-group",
+                title: "React Mastery",
+                description: "Master React development",
+                resources: [
+                  {
+                    id: "react-basics-video",
+                    title: "React Full Course",
+                    type: "Video Course",
+                    provider: language === "bangla" ? "Programming Hero BD" : language === "hindi" ? "CodeWithHarry" : "FreeCodeCamp",
+                    duration: language === "bangla" ? "15 hours" : language === "hindi" ? "14 hours" : "12 hours",
+                    description: language === "bangla" ? "React এর সম্পূর্ণ কোর্স বাংলায়" : language === "hindi" ? "React का पूरा कोर्स हिंदी में" : "Complete React tutorial covering components, hooks, and state management",
+                    url: language === "bangla" ? "https://www.youtube.com/watch?v=6RhOzQciVwI" : language === "hindi" ? "https://www.youtube.com/watch?v=RGKi6LSPDLU" : "https://www.youtube.com/watch?v=bMknfKXIFA8",
+                    difficulty: "Intermediate"
+                  },
+                  {
+                    id: "react-playlist",
+                    title: "React Masterclass Playlist",
+                    type: "Playlist",
+                    provider: language === "bangla" ? "Learn with Sumit" : language === "hindi" ? "Thapa Technical" : "Codevolution",
+                    duration: language === "bangla" ? "25 videos" : language === "hindi" ? "30 videos" : "35 videos",
+                    description: language === "bangla" ? "React মাস্টারক্লাস প্লেলিস্ট" : language === "hindi" ? "React मास्टारक्লাস प্লেলিস্ট" : "Comprehensive React learning playlist",
+                    url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLHiZ4m8vCp9M6HVQv7a36cp8LKzyHIePr" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLwGdqUZWnOp3aROg4wypcRhZqJG3ajZWJ" : "https://www.youtube.com/playlist?list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3",
+                    difficulty: "Intermediate"
+                  },
+                  {
+                    id: "react-website",
+                    title: "Official React Documentation",
+                    type: "Website",
+                    provider: "React Team",
+                    duration: "Self-paced",
+                    description: language === "bangla" ? "অফিসিয়াল React ডকুমেন্টেশন" : language === "hindi" ? "आधिकारिक React डॉक्यूमेंटेशन" : "Official React documentation with interactive examples",
+                    url: "https://react.dev/",
+                    difficulty: "All Levels"
+                  }
+                ]
               }
             ]
           }
@@ -559,6 +599,14 @@ const SkillDetail = () => {
     );
   };
 
+  const toggleResourceGroup = (groupId: string) => {
+    setExpandedResourceGroups(prev =>
+      prev.includes(groupId)
+        ? prev.filter(id => id !== groupId)
+        : [...prev, groupId]
+    );
+  };
+
   const openResourceViewer = (resource: any, stageResources: any[]) => {
     setSelectedResource(resource);
     setSelectedStageResources(stageResources);
@@ -569,7 +617,16 @@ const SkillDetail = () => {
     setSelectedStageResources([]);
   };
 
-  const totalResources = roadmapStages.reduce((total, stage) => total + stage.resources.length, 0);
+  const getAllResources = () => {
+    return roadmapStages.reduce((allResources, stage) => {
+      const stageResources = stage.resourceGroups?.reduce((groupResources: any[], group: any) => {
+        return [...groupResources, ...group.resources];
+      }, []) || [];
+      return [...allResources, ...stageResources];
+    }, []);
+  };
+
+  const totalResources = getAllResources().length;
   const completedCount = completedResources.length;
   const progressPercentage = totalResources > 0 ? (completedCount / totalResources) * 100 : 0;
 
@@ -586,6 +643,19 @@ const SkillDetail = () => {
   const handlePathSelect = (pathId: string, language: string) => {
     setSelectedPath(pathId);
     setSelectedLanguage(language);
+  };
+
+  const handleLanguageChange = (newLanguage: string) => {
+    setSelectedLanguage(newLanguage);
+  };
+
+  const getLanguageDisplay = (lang: string) => {
+    switch (lang) {
+      case 'bangla': return 'বাংলা';
+      case 'hindi': return 'हिंदी';
+      case 'english': return 'English';
+      default: return 'English';
+    }
   };
 
   return (
@@ -624,7 +694,7 @@ const SkillDetail = () => {
                 {selectedPath && (
                   <Badge variant="outline" className="flex items-center gap-1">
                     <Globe className="w-3 h-3" />
-                    {selectedLanguage === "bangla" ? "বাংলা" : selectedLanguage === "hindi" ? "हिंदी" : "English"}
+                    {getLanguageDisplay(selectedLanguage)}
                   </Badge>
                 )}
               </div>
@@ -680,6 +750,21 @@ const SkillDetail = () => {
                 <Button variant="outline" onClick={() => setSelectedPath(null)}>
                   Change Path
                 </Button>
+                
+                {/* Language Selector */}
+                <div className="flex items-center gap-2 ml-auto">
+                  <Globe className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+                  <Select value={selectedLanguage} onValueChange={handleLanguageChange}>
+                    <SelectTrigger className="w-32">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="english">English</SelectItem>
+                      <SelectItem value="bangla">বাংলা</SelectItem>
+                      <SelectItem value="hindi">हिंदी</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
               
               {roadmapStages.map((stage, stageIndex) => (
@@ -698,58 +783,86 @@ const SkillDetail = () => {
                     </div>
                   </CardHeader>
                   <CardContent className="p-6">
-                    <div className="grid gap-4">
-                      {stage.resources.map((resource) => (
-                        <div key={resource.id} className="border dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition-shadow">
-                          <div className="flex items-start gap-4">
-                            <button
-                              onClick={() => toggleResourceCompletion(resource.id)}
-                              className={`mt-1 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${
-                                completedResources.includes(resource.id)
-                                  ? 'bg-green-500 border-green-500 text-white'
-                                  : 'border-gray-300 hover:border-green-400'
-                              }`}
-                            >
-                              {completedResources.includes(resource.id) && (
-                                <CheckCircle className="w-4 h-4" />
-                              )}
-                            </button>
-                            <div className="flex-1">
-                              <div className="flex items-center gap-2 mb-2">
-                                {getResourceIcon(resource.type)}
-                                <h4 className="font-semibold text-gray-900 dark:text-white">{resource.title}</h4>
-                                <Badge variant="outline" className="text-xs">
-                                  {resource.type}
-                                </Badge>
-                                <Badge variant="secondary" className="text-xs">
-                                  {resource.difficulty}
-                                </Badge>
+                    <div className="space-y-4">
+                      {stage.resourceGroups?.map((group: any) => (
+                        <div key={group.id} className="border dark:border-gray-700 rounded-lg">
+                          <button
+                            onClick={() => toggleResourceGroup(group.id)}
+                            className="w-full p-4 text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors rounded-lg"
+                          >
+                            <div className="flex items-center justify-between">
+                              <div>
+                                <h4 className="font-semibold text-gray-900 dark:text-white">{group.title}</h4>
+                                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{group.description}</p>
+                                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                  {group.resources.length} resources available
+                                </p>
                               </div>
-                              <p className="text-gray-600 dark:text-gray-300 mb-2">{resource.description}</p>
-                              <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-                                  <span>By {resource.provider}</span>
-                                  <span>{resource.duration}</span>
-                                </div>
-                                <div className="flex gap-2">
-                                  <Button 
-                                    variant="default" 
-                                    size="sm"
-                                    onClick={() => openResourceViewer(resource, stage.resources)}
-                                  >
-                                    <Play className="w-4 h-4 mr-1" />
-                                    Watch
-                                  </Button>
-                                  <Button variant="outline" size="sm" asChild>
-                                    <a href={resource.url} target="_blank" rel="noopener noreferrer">
-                                      <ExternalLink className="w-4 h-4 mr-1" />
-                                      External
-                                    </a>
-                                  </Button>
-                                </div>
+                              <div className={`transform transition-transform ${
+                                expandedResourceGroups.includes(group.id) ? 'rotate-180' : ''
+                              }`}>
+                                ▼
                               </div>
                             </div>
-                          </div>
+                          </button>
+                          
+                          {expandedResourceGroups.includes(group.id) && (
+                            <div className="border-t dark:border-gray-700 p-4 space-y-3">
+                              {group.resources.map((resource: any) => (
+                                <div key={resource.id} className="border dark:border-gray-600 rounded-lg p-4 hover:shadow-md transition-shadow">
+                                  <div className="flex items-start gap-4">
+                                    <button
+                                      onClick={() => toggleResourceCompletion(resource.id)}
+                                      className={`mt-1 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${
+                                        completedResources.includes(resource.id)
+                                          ? 'bg-green-500 border-green-500 text-white'
+                                          : 'border-gray-300 hover:border-green-400'
+                                      }`}
+                                    >
+                                      {completedResources.includes(resource.id) && (
+                                        <CheckCircle className="w-4 h-4" />
+                                      )}
+                                    </button>
+                                    <div className="flex-1">
+                                      <div className="flex items-center gap-2 mb-2">
+                                        {getResourceIcon(resource.type)}
+                                        <h5 className="font-semibold text-gray-900 dark:text-white">{resource.title}</h5>
+                                        <Badge variant="outline" className="text-xs">
+                                          {resource.type}
+                                        </Badge>
+                                        <Badge variant="secondary" className="text-xs">
+                                          {resource.difficulty}
+                                        </Badge>
+                                      </div>
+                                      <p className="text-gray-600 dark:text-gray-300 mb-2">{resource.description}</p>
+                                      <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                                          <span>By {resource.provider}</span>
+                                          <span>{resource.duration}</span>
+                                        </div>
+                                        <div className="flex gap-2">
+                                          <Button 
+                                            variant="default" 
+                                            size="sm"
+                                            onClick={() => openResourceViewer(resource, group.resources)}
+                                          >
+                                            <Play className="w-4 h-4 mr-1" />
+                                            Watch
+                                          </Button>
+                                          <Button variant="outline" size="sm" asChild>
+                                            <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                                              <ExternalLink className="w-4 h-4 mr-1" />
+                                              External
+                                            </a>
+                                          </Button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       ))}
                     </div>
