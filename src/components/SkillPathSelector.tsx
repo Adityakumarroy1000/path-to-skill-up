@@ -2,6 +2,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Globe } from "lucide-react";
+import { useState } from "react";
 
 interface SkillPath {
   id: string;
@@ -17,10 +20,12 @@ interface SkillPath {
 interface SkillPathSelectorProps {
   skillTitle: string;
   paths: SkillPath[];
-  onPathSelect: (pathId: string) => void;
+  onPathSelect: (pathId: string, language: string) => void;
 }
 
 const SkillPathSelector = ({ skillTitle, paths, onPathSelect }: SkillPathSelectorProps) => {
+  const [selectedLanguage, setSelectedLanguage] = useState("english");
+
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty.toLowerCase()) {
       case 'beginner': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300';
@@ -31,15 +36,40 @@ const SkillPathSelector = ({ skillTitle, paths, onPathSelect }: SkillPathSelecto
     }
   };
 
+  const getLanguageDisplay = (lang: string) => {
+    switch (lang) {
+      case 'bangla': return 'বাংলা';
+      case 'hindi': return 'हिंदी';
+      case 'english': return 'English';
+      default: return 'English';
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="text-center">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
           Choose Your {skillTitle} Path
         </h2>
-        <p className="text-gray-600 dark:text-gray-300">
+        <p className="text-gray-600 dark:text-gray-300 mb-6">
           Select the learning path that best fits your goals and experience level
         </p>
+        
+        {/* Language Selector */}
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <Globe className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Learning Language:</span>
+          <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
+            <SelectTrigger className="w-40">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="english">English</SelectItem>
+              <SelectItem value="bangla">বাংলা (Bangla)</SelectItem>
+              <SelectItem value="hindi">हिंदी (Hindi)</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -88,9 +118,16 @@ const SkillPathSelector = ({ skillTitle, paths, onPathSelect }: SkillPathSelecto
                 </div>
               )}
               
+              <div className="bg-blue-50 dark:bg-gray-700 p-3 rounded-lg">
+                <p className="text-xs text-gray-600 dark:text-gray-300 mb-1">Selected Language:</p>
+                <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+                  {getLanguageDisplay(selectedLanguage)}
+                </p>
+              </div>
+              
               <Button 
                 className="w-full mt-4" 
-                onClick={() => onPathSelect(path.id)}
+                onClick={() => onPathSelect(path.id, selectedLanguage)}
               >
                 Start This Path
               </Button>
