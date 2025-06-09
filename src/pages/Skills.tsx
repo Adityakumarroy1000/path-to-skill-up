@@ -1,15 +1,16 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Search, Clock, Users, Star } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Search, Clock, Users, Star, Filter } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const Skills = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [skillFilter, setSkillFilter] = useState("all");
 
   const allSkills = [
     {
@@ -209,11 +210,14 @@ const Skills = () => {
   const categories = ["All", "Programming", "Marketing", "Design", "Data", "Music", "Creative", "Lifestyle", "Language", "Health"];
   const [selectedCategory, setSelectedCategory] = useState("All");
 
+  const skillLevels = ["all", "beginner", "intermediate", "advanced"];
+
   const filteredSkills = allSkills.filter(skill => {
     const matchesSearch = skill.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          skill.description.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === "All" || skill.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+    const matchesLevel = skillFilter === "all" || skill.level.toLowerCase() === skillFilter;
+    return matchesSearch && matchesCategory && matchesLevel;
   });
 
   return (
@@ -251,15 +255,31 @@ const Skills = () => {
 
         {/* Search and Filters */}
         <div className="mb-8">
-          <div className="relative mb-6">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <Input
-              type="text"
-              placeholder="Search skills..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 py-3 text-lg dark:bg-gray-800 dark:border-gray-700"
-            />
+          <div className="flex gap-4 mb-6">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Input
+                type="text"
+                placeholder="Search skills..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 py-3 text-lg dark:bg-gray-800 dark:border-gray-700"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <Filter className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+              <Select value={skillFilter} onValueChange={setSkillFilter}>
+                <SelectTrigger className="w-40">
+                  <SelectValue placeholder="Filter by level" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Levels</SelectItem>
+                  <SelectItem value="beginner">Beginner</SelectItem>
+                  <SelectItem value="intermediate">Intermediate</SelectItem>
+                  <SelectItem value="advanced">Advanced</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
           <div className="flex flex-wrap gap-2">

@@ -1,8 +1,9 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Clock, Users, Star, ExternalLink, Play, BookOpen, Globe, List, Zap } from "lucide-react";
+import { CheckCircle, Clock, Users, Star, ExternalLink, Play, BookOpen, Globe, List, Zap, Download } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -13,6 +14,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 const SkillDetail = () => {
   const { id } = useParams();
   const [completedResources, setCompletedResources] = useState<string[]>([]);
+  const [completedResourceGroups, setCompletedResourceGroups] = useState<string[]>([]);
   const [selectedPath, setSelectedPath] = useState<string | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState<string>("english");
   const [selectedResource, setSelectedResource] = useState<any>(null);
@@ -199,7 +201,7 @@ const SkillDetail = () => {
                     type: "Playlist",
                     provider: language === "bangla" ? "Anisul Islam" : language === "hindi" ? "Thapa Technical" : "Traversy Media",
                     duration: language === "bangla" ? "8 videos" : language === "hindi" ? "12 videos" : "10 videos",
-                    description: language === "bangla" ? "HTML শেখার জন্য সম্পূর্ণ প্লেলিস্ট" : language === "hindi" ? "HTML सीखने के लिए प्लेलिस্ট" : "Comprehensive HTML playlist for beginners",
+                    description: language === "bangla" ? "HTML শেখার জন্য সম্পূর্ণ প্লেলিস্ট" : language === "hindi" ? "HTML सीखने के लिए प्लेलिस्ट" : "Comprehensive HTML playlist for beginners",
                     url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLgH5QX0i9K3qzryglMjcyEktz4q7ySunX" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLwGdqUZWnOp00IbeN0OtL9dmnasipZ9x8" : "https://www.youtube.com/playlist?list=PLillGF-RfqbZTASqIqdvm1R5mLrQq79CU",
                     difficulty: "Beginner"
                   },
@@ -246,7 +248,7 @@ const SkillDetail = () => {
                     type: "Playlist",
                     provider: language === "bangla" ? "Anisul Islam" : language === "hindi" ? "Thapa Technical" : "Kevin Powell",
                     duration: language === "bangla" ? "15 videos" : language === "hindi" ? "20 videos" : "25 videos",
-                    description: language === "bangla" ? "CSS শেখার সম্পূর্ণ প্লেলিস্ট" : language === "hindi" ? "CSS सीखने की प्लेलिस্ট" : "Advanced CSS techniques and best practices",
+                    description: language === "bangla" ? "CSS শেখার সম্পূর্ণ প্লেলিস্ট" : language === "hindi" ? "CSS सीखने की प्लेलिस्ट" : "Advanced CSS techniques and best practices",
                     url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLgH5QX0i9K3qjCBXjTmv7Xeh8MDUUVJDO" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLwGdqUZWnOp1j_ynK6N-eXJzWXJfRr0FI" : "https://www.youtube.com/playlist?list=PL4-IK0AVhVjP27yZLwW-gkPggRps0CCnP",
                     difficulty: "Intermediate"
                   },
@@ -291,7 +293,7 @@ const SkillDetail = () => {
                     type: "Playlist",
                     provider: language === "bangla" ? "Learn with Sumit" : language === "hindi" ? "Chai aur Code" : "JavaScript Mastery",
                     duration: language === "bangla" ? "30 videos" : language === "hindi" ? "35 videos" : "40 videos",
-                    description: language === "bangla" ? "জাভাস্ক্রিপ্ট মাস্টারি প্লেলিস্ট" : language === "hindi" ? "JavaScript मास्टरी प्लेलिस্ট" : "Complete JavaScript mastery playlist",
+                    description: language === "bangla" ? "জাভাস্ক্রিপ্ট মাস্টারি প্লেলিস্ট" : language === "hindi" ? "JavaScript मास्टरी प्लेलिस्ट" : "Complete JavaScript mastery playlist",
                     url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLHiZ4m8vCp9OkrURufHpGUUTBjBNb-co-" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37" : "https://www.youtube.com/playlist?list=PL0Zuz27SZ-6N3bG4YZhkrCL3ZmDcLTuGd",
                     difficulty: "Intermediate"
                   },
@@ -346,7 +348,7 @@ const SkillDetail = () => {
                     type: "Playlist",
                     provider: language === "bangla" ? "Learn with Sumit" : language === "hindi" ? "Thapa Technical" : "Codevolution",
                     duration: language === "bangla" ? "25 videos" : language === "hindi" ? "30 videos" : "35 videos",
-                    description: language === "bangla" ? "React মাস্টারক্লাস প্লেলিস্ট" : language === "hindi" ? "React मास्टारक्লাস प্লেলিস্ট" : "Comprehensive React learning playlist",
+                    description: language === "bangla" ? "React মাস্টারক্লাস প্লেলিস্ট" : language === "hindi" ? "React मास्टारক्लाস प্লেলিস্ট" : "Comprehensive React learning playlist",
                     url: language === "bangla" ? "https://www.youtube.com/playlist?list=PLHiZ4m8vCp9M6HVQv7a36cp8LKzyHIePr" : language === "hindi" ? "https://www.youtube.com/playlist?list=PLwGdqUZWnOp3aROg4wypcRhZqJG3ajZWJ" : "https://www.youtube.com/playlist?list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3",
                     difficulty: "Intermediate"
                   },
@@ -374,36 +376,43 @@ const SkillDetail = () => {
             title: "Node.js Fundamentals",
             description: "Learn server-side JavaScript development",
             duration: "3-4 weeks",
-            resources: [
+            resourceGroups: [
               {
-                id: "nodejs-basics",
-                title: "Node.js Full Course",
-                type: "Video Course",
-                provider: "FreeCodeCamp",
-                duration: "8.5 hours",
-                description: "Complete Node.js tutorial covering servers, APIs, and modules",
-                url: "https://www.youtube.com/watch?v=Oe421EPjeBE",
-                difficulty: "Beginner"
-              },
-              {
-                id: "nodejs-crash",
-                title: "Node.js Crash Course",
-                type: "Video Tutorial",
-                provider: "Traversy Media",
-                duration: "1 hour",
-                description: "Quick introduction to Node.js development",
-                url: "https://www.youtube.com/watch?v=fBNz5xF-Kx4",
-                difficulty: "Beginner"
-              },
-              {
-                id: "express-tutorial",
-                title: "Express.js Tutorial",
-                type: "Video Course",
-                provider: "Programming with Mosh",
-                duration: "1 hour",
-                description: "Learn Express.js framework for building web applications",
-                url: "https://www.youtube.com/watch?v=pKd0Rpw7O48",
-                difficulty: "Beginner"
+                id: "nodejs-group",
+                title: "Node.js Mastery",
+                description: "Master server-side JavaScript",
+                resources: [
+                  {
+                    id: "nodejs-basics",
+                    title: "Node.js Full Course",
+                    type: "Video Course",
+                    provider: "FreeCodeCamp",
+                    duration: "8.5 hours",
+                    description: "Complete Node.js tutorial covering servers, APIs, and modules",
+                    url: "https://www.youtube.com/watch?v=Oe421EPjeBE",
+                    difficulty: "Beginner"
+                  },
+                  {
+                    id: "nodejs-crash",
+                    title: "Node.js Crash Course",
+                    type: "Video Tutorial",
+                    provider: "Traversy Media",
+                    duration: "1 hour",
+                    description: "Quick introduction to Node.js development",
+                    url: "https://www.youtube.com/watch?v=fBNz5xF-Kx4",
+                    difficulty: "Beginner"
+                  },
+                  {
+                    id: "express-tutorial",
+                    title: "Express.js Tutorial",
+                    type: "Video Course",
+                    provider: "Programming with Mosh",
+                    duration: "1 hour",
+                    description: "Learn Express.js framework for building web applications",
+                    url: "https://www.youtube.com/watch?v=pKd0Rpw7O48",
+                    difficulty: "Beginner"
+                  }
+                ]
               }
             ]
           },
@@ -412,26 +421,33 @@ const SkillDetail = () => {
             title: "Database & APIs",
             description: "Work with databases and create RESTful APIs",
             duration: "4-5 weeks",
-            resources: [
+            resourceGroups: [
               {
-                id: "mongodb-tutorial",
-                title: "MongoDB Complete Course",
-                type: "Video Course",
-                provider: "FreeCodeCamp",
-                duration: "7 hours",
-                description: "Learn MongoDB database operations and integration",
-                url: "https://www.youtube.com/watch?v=c2M-rlkkT5o",
-                difficulty: "Intermediate"
-              },
-              {
-                id: "rest-api",
-                title: "REST API Tutorial",
-                type: "Video Course",
-                provider: "Web Dev Simplified",
-                duration: "2.5 hours",
-                description: "Build RESTful APIs with Node.js and Express",
-                url: "https://www.youtube.com/watch?v=fgTGADljAeg",
-                difficulty: "Intermediate"
+                id: "database-group",
+                title: "Database Mastery",
+                description: "Learn database operations and API development",
+                resources: [
+                  {
+                    id: "mongodb-tutorial",
+                    title: "MongoDB Complete Course",
+                    type: "Video Course",
+                    provider: "FreeCodeCamp",
+                    duration: "7 hours",
+                    description: "Learn MongoDB database operations and integration",
+                    url: "https://www.youtube.com/watch?v=c2M-rlkkT5o",
+                    difficulty: "Intermediate"
+                  },
+                  {
+                    id: "rest-api",
+                    title: "REST API Tutorial",
+                    type: "Video Course",
+                    provider: "Web Dev Simplified",
+                    duration: "2.5 hours",
+                    description: "Build RESTful APIs with Node.js and Express",
+                    url: "https://www.youtube.com/watch?v=fgTGADljAeg",
+                    difficulty: "Intermediate"
+                  }
+                ]
               }
             ]
           }
@@ -448,26 +464,33 @@ const SkillDetail = () => {
             title: "Guitar Basics",
             description: "Learn fundamental guitar techniques",
             duration: "4-6 weeks",
-            resources: [
+            resourceGroups: [
               {
-                id: "guitar-setup",
-                title: "Guitar Setup & Tuning",
-                type: "Video Tutorial",
-                provider: "JustinGuitar",
-                duration: "30 mins",
-                description: "Learn proper guitar setup, tuning, and basic maintenance",
-                url: "https://www.youtube.com/watch?v=BnMqAhWNyyM",
-                difficulty: "Beginner"
-              },
-              {
-                id: "first-chords",
-                title: "Your First Guitar Chords",
-                type: "Video Course",
-                provider: "JustinGuitar",
-                duration: "2 hours",
-                description: "Learn essential beginner chords: A, D, E, G, C",
-                url: "https://www.youtube.com/watch?v=NGXSoJPBFJo",
-                difficulty: "Beginner"
+                id: "guitar-basics-group",
+                title: "Guitar Fundamentals",
+                description: "Master basic guitar skills",
+                resources: [
+                  {
+                    id: "guitar-setup",
+                    title: "Guitar Setup & Tuning",
+                    type: "Video Tutorial",
+                    provider: "JustinGuitar",
+                    duration: "30 mins",
+                    description: "Learn proper guitar setup, tuning, and basic maintenance",
+                    url: "https://www.youtube.com/watch?v=BnMqAhWNyyM",
+                    difficulty: "Beginner"
+                  },
+                  {
+                    id: "first-chords",
+                    title: "Your First Guitar Chords",
+                    type: "Video Course",
+                    provider: "JustinGuitar",
+                    duration: "2 hours",
+                    description: "Learn essential beginner chords: A, D, E, G, C",
+                    url: "https://www.youtube.com/watch?v=NGXSoJPBFJo",
+                    difficulty: "Beginner"
+                  }
+                ]
               }
             ]
           },
@@ -476,26 +499,33 @@ const SkillDetail = () => {
             title: "Strumming & Rhythm",
             description: "Master basic strumming patterns and rhythm",
             duration: "3-4 weeks",
-            resources: [
+            resourceGroups: [
               {
-                id: "strumming-patterns",
-                title: "Basic Strumming Patterns",
-                type: "Video Tutorial",
-                provider: "GuitarLessons365",
-                duration: "45 mins",
-                description: "Learn essential strumming patterns for popular songs",
-                url: "https://www.youtube.com/watch?v=oXerhAA_5Lk",
-                difficulty: "Beginner"
-              },
-              {
-                id: "rhythm-guitar",
-                title: "Rhythm Guitar Fundamentals",
-                type: "Video Course",
-                provider: "Marty Music",
-                duration: "1.5 hours",
-                description: "Develop timing and rhythm skills for acoustic guitar",
-                url: "https://www.youtube.com/watch?v=v0_PLs4xdwc",
-                difficulty: "Beginner"
+                id: "strumming-group",
+                title: "Strumming Mastery",
+                description: "Learn essential strumming techniques",
+                resources: [
+                  {
+                    id: "strumming-patterns",
+                    title: "Basic Strumming Patterns",
+                    type: "Video Tutorial",
+                    provider: "GuitarLessons365",
+                    duration: "45 mins",
+                    description: "Learn essential strumming patterns for popular songs",
+                    url: "https://www.youtube.com/watch?v=oXerhAA_5Lk",
+                    difficulty: "Beginner"
+                  },
+                  {
+                    id: "rhythm-guitar",
+                    title: "Rhythm Guitar Fundamentals",
+                    type: "Video Course",
+                    provider: "Marty Music",
+                    duration: "1.5 hours",
+                    description: "Develop timing and rhythm skills for acoustic guitar",
+                    url: "https://www.youtube.com/watch?v=v0_PLs4xdwc",
+                    difficulty: "Beginner"
+                  }
+                ]
               }
             ]
           },
@@ -504,16 +534,23 @@ const SkillDetail = () => {
             title: "Fingerpicking & Advanced Techniques",
             description: "Learn fingerpicking and advanced acoustic techniques",
             duration: "6-8 weeks",
-            resources: [
+            resourceGroups: [
               {
-                id: "fingerpicking-basics",
-                title: "Fingerpicking for Beginners",
-                type: "Video Course",
-                provider: "Steve Stine Guitar",
-                duration: "3 hours",
-                description: "Master fingerpicking technique and patterns",
-                url: "https://www.youtube.com/watch?v=NZWMrm8lDmA",
-                difficulty: "Intermediate"
+                id: "fingerpicking-group",
+                title: "Fingerpicking Mastery",
+                description: "Master advanced fingerpicking techniques",
+                resources: [
+                  {
+                    id: "fingerpicking-basics",
+                    title: "Fingerpicking for Beginners",
+                    type: "Video Course",
+                    provider: "Steve Stine Guitar",
+                    duration: "3 hours",
+                    description: "Master fingerpicking technique and patterns",
+                    url: "https://www.youtube.com/watch?v=NZWMrm8lDmA",
+                    difficulty: "Intermediate"
+                  }
+                ]
               }
             ]
           }
@@ -530,26 +567,33 @@ const SkillDetail = () => {
             title: "Vocal Fundamentals",
             description: "Learn proper breathing and vocal technique",
             duration: "3-4 weeks",
-            resources: [
+            resourceGroups: [
               {
-                id: "breathing-technique",
-                title: "Proper Breathing for Singers",
-                type: "Video Tutorial",
-                provider: "Superior Singing Method",
-                duration: "1 hour",
-                description: "Master diaphragmatic breathing and breath support",
-                url: "https://www.youtube.com/watch?v=F6Noi7qzl3E",
-                difficulty: "Beginner"
-              },
-              {
-                id: "vocal-warmups",
-                title: "Daily Vocal Warm-ups",
-                type: "Video Tutorial",
-                provider: "Vocal Coach",
-                duration: "30 mins",
-                description: "Essential warm-up exercises to protect your voice",
-                url: "https://www.youtube.com/watch?v=9c6SzwB0tgg",
-                difficulty: "Beginner"
+                id: "vocal-basics-group",
+                title: "Vocal Fundamentals",
+                description: "Master basic vocal techniques",
+                resources: [
+                  {
+                    id: "breathing-technique",
+                    title: "Proper Breathing for Singers",
+                    type: "Video Tutorial",
+                    provider: "Superior Singing Method",
+                    duration: "1 hour",
+                    description: "Master diaphragmatic breathing and breath support",
+                    url: "https://www.youtube.com/watch?v=F6Noi7qzl3E",
+                    difficulty: "Beginner"
+                  },
+                  {
+                    id: "vocal-warmups",
+                    title: "Daily Vocal Warm-ups",
+                    type: "Video Tutorial",
+                    provider: "Vocal Coach",
+                    duration: "30 mins",
+                    description: "Essential warm-up exercises to protect your voice",
+                    url: "https://www.youtube.com/watch?v=9c6SzwB0tgg",
+                    difficulty: "Beginner"
+                  }
+                ]
               }
             ]
           },
@@ -558,26 +602,33 @@ const SkillDetail = () => {
             title: "Pitch & Tone Development",
             description: "Improve pitch accuracy and vocal tone",
             duration: "4-5 weeks",
-            resources: [
+            resourceGroups: [
               {
-                id: "pitch-training",
-                title: "Pitch Training Exercises",
-                type: "Video Course",
-                provider: "New York Vocal Coaching",
-                duration: "2 hours",
-                description: "Develop perfect pitch and interval recognition",
-                url: "https://www.youtube.com/watch?v=m-l7TO01-Sg",
-                difficulty: "Intermediate"
-              },
-              {
-                id: "vocal-tone",
-                title: "Finding Your Voice",
-                type: "Video Tutorial",
-                provider: "Cheryl Porter Vocal Coach",
-                duration: "45 mins",
-                description: "Discover and develop your unique vocal tone",
-                url: "https://www.youtube.com/watch?v=R8OOWcsFj0A",
-                difficulty: "Intermediate"
+                id: "pitch-group",
+                title: "Pitch & Tone Mastery",
+                description: "Develop perfect pitch and vocal tone",
+                resources: [
+                  {
+                    id: "pitch-training",
+                    title: "Pitch Training Exercises",
+                    type: "Video Course",
+                    provider: "New York Vocal Coaching",
+                    duration: "2 hours",
+                    description: "Develop perfect pitch and interval recognition",
+                    url: "https://www.youtube.com/watch?v=m-l7TO01-Sg",
+                    difficulty: "Intermediate"
+                  },
+                  {
+                    id: "vocal-tone",
+                    title: "Finding Your Voice",
+                    type: "Video Tutorial",
+                    provider: "Cheryl Porter Vocal Coach",
+                    duration: "45 mins",
+                    description: "Discover and develop your unique vocal tone",
+                    url: "https://www.youtube.com/watch?v=R8OOWcsFj0A",
+                    difficulty: "Intermediate"
+                  }
+                ]
               }
             ]
           }
@@ -597,6 +648,66 @@ const SkillDetail = () => {
         ? prev.filter(id => id !== resourceId)
         : [...prev, resourceId]
     );
+  };
+
+  const toggleResourceGroupCompletion = (groupId: string) => {
+    setCompletedResourceGroups(prev =>
+      prev.includes(groupId)
+        ? prev.filter(id => id !== groupId)
+        : [...prev, groupId]
+    );
+  };
+
+  const isResourceGroupCompleted = (groupId: string, resources: any[]) => {
+    return completedResourceGroups.includes(groupId) || 
+           resources.some(resource => completedResources.includes(resource.id));
+  };
+
+  const downloadRoadmapPDF = () => {
+    // Create PDF download functionality
+    const roadmapContent = generateRoadmapContent();
+    const blob = new Blob([roadmapContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${skill.title.replace(/\s+/g, '_')}_Roadmap.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const generateRoadmapContent = () => {
+    let content = `${skill.title} Learning Roadmap\n`;
+    content += `${'='.repeat(skill.title.length + 17)}\n\n`;
+    content += `Description: ${skill.description}\n`;
+    content += `Level: ${skill.level}\n`;
+    content += `Duration: ${skill.duration}\n`;
+    content += `Rating: ${skill.rating}/5\n\n`;
+
+    roadmapStages.forEach((stage, index) => {
+      content += `Stage ${index + 1}: ${stage.title}\n`;
+      content += `${'-'.repeat(stage.title.length + 10)}\n`;
+      content += `Description: ${stage.description}\n`;
+      content += `Duration: ${stage.duration}\n\n`;
+
+      if (stage.resourceGroups) {
+        stage.resourceGroups.forEach((group: any) => {
+          content += `  ${group.title}:\n`;
+          content += `  ${group.description}\n\n`;
+          group.resources.forEach((resource: any) => {
+            content += `    • ${resource.title}\n`;
+            content += `      Type: ${resource.type}\n`;
+            content += `      Provider: ${resource.provider}\n`;
+            content += `      Duration: ${resource.duration}\n`;
+            content += `      URL: ${resource.url}\n\n`;
+          });
+        });
+      }
+      content += '\n';
+    });
+
+    return content;
   };
 
   const toggleResourceGroup = (groupId: string) => {
@@ -726,8 +837,9 @@ const SkillDetail = () => {
                     </div>
                     <Progress value={progressPercentage} className="h-2" />
                   </div>
-                  <Button size="lg">
-                    {progressPercentage > 0 ? "Continue Learning" : "Start Learning"}
+                  <Button size="lg" onClick={downloadRoadmapPDF}>
+                    <Download className="w-4 h-4 mr-2" />
+                    Download Roadmap
                   </Button>
                 </div>
               )}
@@ -791,12 +903,29 @@ const SkillDetail = () => {
                             className="w-full p-4 text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors rounded-lg"
                           >
                             <div className="flex items-center justify-between">
-                              <div>
-                                <h4 className="font-semibold text-gray-900 dark:text-white">{group.title}</h4>
-                                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{group.description}</p>
-                                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                                  {group.resources.length} resources available
-                                </p>
+                              <div className="flex items-center gap-3 flex-1">
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    toggleResourceGroupCompletion(group.id);
+                                  }}
+                                  className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${
+                                    isResourceGroupCompleted(group.id, group.resources)
+                                      ? 'bg-green-500 border-green-500 text-white'
+                                      : 'border-gray-300 hover:border-green-400'
+                                  }`}
+                                >
+                                  {isResourceGroupCompleted(group.id, group.resources) && (
+                                    <CheckCircle className="w-4 h-4" />
+                                  )}
+                                </button>
+                                <div>
+                                  <h4 className="font-semibold text-gray-900 dark:text-white">{group.title}</h4>
+                                  <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{group.description}</p>
+                                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                    {group.resources.length} resources available
+                                  </p>
+                                </div>
                               </div>
                               <div className={`transform transition-transform ${
                                 expandedResourceGroups.includes(group.id) ? 'rotate-180' : ''
@@ -811,18 +940,6 @@ const SkillDetail = () => {
                               {group.resources.map((resource: any) => (
                                 <div key={resource.id} className="border dark:border-gray-600 rounded-lg p-4 hover:shadow-md transition-shadow">
                                   <div className="flex items-start gap-4">
-                                    <button
-                                      onClick={() => toggleResourceCompletion(resource.id)}
-                                      className={`mt-1 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${
-                                        completedResources.includes(resource.id)
-                                          ? 'bg-green-500 border-green-500 text-white'
-                                          : 'border-gray-300 hover:border-green-400'
-                                      }`}
-                                    >
-                                      {completedResources.includes(resource.id) && (
-                                        <CheckCircle className="w-4 h-4" />
-                                      )}
-                                    </button>
                                     <div className="flex-1">
                                       <div className="flex items-center gap-2 mb-2">
                                         {getResourceIcon(resource.type)}
