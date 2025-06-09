@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -77,78 +78,14 @@ const SkillDetail = () => {
         title: "HTML Fundamentals",
         description: "Learn the building blocks of web pages with HTML structure and semantic markup",
         duration: "2-3 weeks",
-        topics: ["HTML structure and syntax", "Semantic HTML elements", "Forms and input types", "Accessibility basics"],
-        resources: [
-          {
-            title: "HTML Full Course",
-            type: "Video Course",
-            level: "Beginner",
-            description: "Complete HTML tutorial covering all elements and semantic markup",
-            provider: "FreeCodeCamp",
-            duration: "4.5 hours",
-            url: "#",
-            platform: "External"
-          },
-          {
-            title: "HTML Learning Playlist",
-            type: "Playlist",
-            level: "Beginner",
-            description: "Comprehensive HTML playlist for beginners",
-            provider: "Traversy Media",
-            duration: "10 videos",
-            url: "#",
-            platform: "External"
-          },
-          {
-            title: "Interactive HTML Tutorial",
-            type: "Website",
-            level: "Beginner",
-            description: "Interactive HTML learning with examples",
-            provider: "W3Schools",
-            duration: "Self-paced",
-            url: "#",
-            platform: "External"
-          },
-          {
-            title: "HTML One-Shot Tutorial",
-            type: "One-Shot",
-            level: "Beginner",
-            description: "Learn HTML in one comprehensive video",
-            provider: "Web Dev Simplified",
-            duration: "2 hours",
-            url: "#",
-            platform: "External"
-          }
-        ]
+        topics: ["HTML structure and syntax", "Semantic HTML elements", "Forms and input types", "Accessibility basics"]
       },
       {
         phase: "Styling",
         title: "CSS Mastery",
         description: "Master CSS for beautiful, responsive designs",
         duration: "3-4 weeks",
-        topics: ["CSS selectors and properties", "Flexbox and Grid", "Responsive design", "CSS animations"],
-        resources: [
-          {
-            title: "CSS Complete Guide",
-            type: "Video Course",
-            level: "Beginner",
-            description: "Complete CSS course from basics to advanced",
-            provider: "The Net Ninja",
-            duration: "6 hours",
-            url: "#",
-            platform: "External"
-          },
-          {
-            title: "CSS Flexbox Tutorial",
-            type: "Playlist",
-            level: "Intermediate",
-            description: "Master CSS Flexbox layout",
-            provider: "CSS Tricks",
-            duration: "8 videos",
-            url: "#",
-            platform: "External"
-          }
-        ]
+        topics: ["CSS selectors and properties", "Flexbox and Grid", "Responsive design", "CSS animations"]
       }
     ],
     bangla: [
@@ -157,29 +94,7 @@ const SkillDetail = () => {
         title: "HTML এর মূল বিষয়",
         description: "ওয়েব পেজের মূল কাঠামো HTML এর সাথে পরিচিত হন",
         duration: "২-৩ সপ্তাহ",
-        topics: ["HTML গঠন এবং সিনট্যাক্স", "সিমান্টিক HTML এলিমেন্ট", "ফর্ম এবং ইনপুট প্রকার", "অ্যাক্সেসিবিলিটি মূল বিষয়"],
-        resources: [
-          {
-            title: "HTML সম্পূর্ণ কোর্স",
-            type: "ভিডিও কোর্স",
-            level: "শিক্ষানবিস",
-            description: "সম্পূর্ণ HTML টিউটোরিয়াল বাংলায়",
-            provider: "বাংলা কোডিং",
-            duration: "৫ ঘন্টা",
-            url: "#",
-            platform: "বাহ্যিক"
-          },
-          {
-            title: "HTML শেখার প্লেলিস্ট",
-            type: "প্লেলিস্ট",
-            level: "শিক্ষানবিস",
-            description: "শিক্ষানবিসদের জন্য HTML প্লেলিস্ট",
-            provider: "প্রোগ্রামিং হিরো",
-            duration: "১২ ভিডিও",
-            url: "#",
-            platform: "বাহ্যিক"
-          }
-        ]
+        topics: ["HTML গঠন এবং সিনট্যাক্স", "সিমান্টিক HTML এলিমেন্ট", "ফর্ম এবং ইনপুট প্রকার", "অ্যাক্সেসিবিলিটি মূল বিষয়"]
       }
     ],
     hindi: [
@@ -188,29 +103,7 @@ const SkillDetail = () => {
         title: "HTML के मूल सिद्धांत",
         description: "वेब पेजों के निर्माण खंडों को HTML संरचना के साथ सीखें",
         duration: "2-3 सप्ताह",
-        topics: ["HTML संरचना और सिंटैक्स", "सिमेंटिक HTML तत्व", "फॉर्म और इनपुट प्रकार", "पहुंच की मूल बातें"],
-        resources: [
-          {
-            title: "HTML पूर्ण कोर्स",
-            type: "वीडियो कोर्स",
-            level: "शुरुआती",
-            description: "हिंदी में संपूर्ण HTML ट्यूटोरियल",
-            provider: "कोड विद हैरी",
-            duration: "4 घंटे",
-            url: "#",
-            platform: "बाहरी"
-          },
-          {
-            title: "HTML सीखने की प्लेलिस्ट",
-            type: "प्लेलिस्ट",
-            level: "शुरुआती",
-            description: "शुरुआती लोगों के लिए HTML प्लेलिस्ट",
-            provider: "थापा टेक्निकल",
-            duration: "15 वीडियो",
-            url: "#",
-            platform: "बाहरी"
-          }
-        ]
+        topics: ["HTML संरचना और सिंटैक्स", "सिमेंटिक HTML तत्व", "फॉर्म और इनपुट प्रकार", "पहुंच की मूल बातें"]
       }
     ]
   };
@@ -218,29 +111,6 @@ const SkillDetail = () => {
   const handlePathSelect = (pathId: string, language: string) => {
     setSelectedPath(pathId);
     setSelectedLanguage(language);
-  };
-
-  const getResourceIcon = (type: string) => {
-    switch (type.toLowerCase()) {
-      case 'video course':
-      case 'ভিডিও কোর্স':
-      case 'वीडियो कोर्स':
-        return <Video className="w-4 h-4" />;
-      case 'playlist':
-      case 'প্লেলিস্ট':
-      case 'प्लेलिस्ट':
-        return <List className="w-4 h-4" />;
-      case 'website':
-      case 'ওয়েবসাইট':
-      case 'वेबसाइट':
-        return <Monitor className="w-4 h-4" />;
-      case 'one-shot':
-      case 'ওয়ান-শট':
-      case 'वन-शॉट':
-        return <Play className="w-4 h-4" />;
-      default:
-        return <Book className="w-4 h-4" />;
-    }
   };
 
   const currentRoadmap = roadmapData[selectedLanguage as keyof typeof roadmapData] || roadmapData.english;
@@ -296,8 +166,8 @@ const SkillDetail = () => {
                 <Button variant="ghost">Browse Skills</Button>
               </Link>
               <Link to="/dashboard">
-                  <Button variant="ghost">Dashboard</Button>
-                </Link>
+                <Button variant="ghost">Dashboard</Button>
+              </Link>
               <ThemeToggle />
               <Button>Get Started</Button>
             </div>
@@ -348,35 +218,34 @@ const SkillDetail = () => {
           </div>
         </div>
 
-        {/* Roadmap Timeline */}
+        {/* Roadmap Timeline - Restored Boxed Design */}
         <div className="space-y-8">
           {currentRoadmap.map((item, index) => (
-            <Card key={index} className="overflow-hidden border-l-4 border-l-blue-500">
-              <CardHeader>
+            <Card key={index} className="overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <Badge variant="outline" className="text-xs">
+                      <Badge variant="secondary" className="bg-white/20 text-white border-white/20">
                         {item.phase}
                       </Badge>
-                      <Badge variant="secondary" className="text-xs">
+                      <Badge variant="secondary" className="bg-white/20 text-white border-white/20">
                         {item.duration}
                       </Badge>
                     </div>
-                    <CardTitle className="text-xl text-gray-900 dark:text-white">
+                    <CardTitle className="text-xl text-white">
                       {item.title}
                     </CardTitle>
-                    <CardDescription className="text-gray-600 dark:text-gray-300 mt-2">
+                    <CardDescription className="text-blue-100 mt-2">
                       {item.description}
                     </CardDescription>
                   </div>
                 </div>
               </CardHeader>
               
-              <CardContent className="space-y-6">
-                {/* Topics */}
+              <CardContent className="p-6">
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
                     Key Topics:
                   </h4>
                   <div className="grid md:grid-cols-2 gap-2">
@@ -388,55 +257,6 @@ const SkillDetail = () => {
                     ))}
                   </div>
                 </div>
-
-                {/* Resources */}
-                {item.resources && (
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
-                      Learning Resources:
-                    </h4>
-                    <div className="grid gap-3">
-                      {item.resources.map((resource, resourceIndex) => (
-                        <Card key={resourceIndex} className="p-4 hover:shadow-md transition-shadow cursor-pointer border border-gray-200 dark:border-gray-700">
-                          <div className="flex items-start gap-3">
-                            <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                              {getResourceIcon(resource.type)}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-start justify-between gap-2">
-                                <div className="flex-1">
-                                  <h5 className="font-medium text-gray-900 dark:text-white text-sm">
-                                    {resource.title}
-                                  </h5>
-                                  <div className="flex items-center gap-2 mt-1">
-                                    <Badge variant="outline" className="text-xs">
-                                      {resource.type}
-                                    </Badge>
-                                    <Badge variant="secondary" className="text-xs">
-                                      {resource.level}
-                                    </Badge>
-                                  </div>
-                                </div>
-                                <ExternalLink className="w-4 h-4 text-gray-400 flex-shrink-0" />
-                              </div>
-                              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
-                                {resource.description}
-                              </p>
-                              <div className="flex items-center justify-between mt-2">
-                                <span className="text-xs text-blue-600 dark:text-blue-400">
-                                  By {resource.provider}
-                                </span>
-                                <span className="text-xs text-gray-500">
-                                  {resource.duration}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </Card>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </CardContent>
             </Card>
           ))}
