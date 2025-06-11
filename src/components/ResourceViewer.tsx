@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -44,52 +43,235 @@ const ResourceViewer = ({ resource, allResources, onClose, onResourceChange }: R
     setIsLoading(true);
     try {
       // Since we can't directly fetch from external websites due to CORS,
-      // we'll simulate fetching content for demonstration
+      // we'll simulate fetching comprehensive content sections
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Simulated content based on the URL
-      if (url.includes('w3schools.com')) {
+      // Simulated comprehensive content based on the URL and resource type
+      if (url.includes('w3schools.com') || currentResource.title.toLowerCase().includes('html')) {
         setWebsiteContent(`
           <div class="tutorial-content">
-            <h1>HTML Tutorial</h1>
-            <p>HTML (HyperText Markup Language) is the standard markup language for creating web pages.</p>
+            <div class="tutorial-header">
+              <h1>HTML Tutorial - Complete Guide</h1>
+              <div class="tutorial-meta">
+                <span class="difficulty-badge">Beginner</span>
+                <span class="duration">Self-paced learning</span>
+              </div>
+            </div>
             
-            <h2>What is HTML?</h2>
-            <ul>
-              <li>HTML stands for Hyper Text Markup Language</li>
-              <li>HTML is the standard markup language for creating Web pages</li>
-              <li>HTML describes the structure of a Web page</li>
-              <li>HTML consists of a series of elements</li>
-            </ul>
-            
-            <h2>HTML Elements</h2>
-            <p>An HTML element is defined by a start tag, some content, and an end tag:</p>
-            <code>&lt;tagname&gt;Content goes here...&lt;/tagname&gt;</code>
-            
-            <h2>Basic HTML Structure</h2>
-            <pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
+            <div class="tutorial-section">
+              <h2>📚 Table of Contents</h2>
+              <ul class="contents-list">
+                <li><a href="#intro">Introduction to HTML</a></li>
+                <li><a href="#elements">HTML Elements</a></li>
+                <li><a href="#attributes">HTML Attributes</a></li>
+                <li><a href="#forms">HTML Forms</a></li>
+                <li><a href="#semantic">Semantic HTML</a></li>
+                <li><a href="#best-practices">Best Practices</a></li>
+              </ul>
+            </div>
+
+            <div class="tutorial-section" id="intro">
+              <h2>🌟 What is HTML?</h2>
+              <p><strong>HTML (HyperText Markup Language)</strong> is the standard markup language for creating web pages and web applications. It describes the structure and content of web pages using markup tags.</p>
+              
+              <div class="key-points">
+                <h3>Key Features:</h3>
+                <ul>
+                  <li><strong>Structure:</strong> Defines the skeleton of web pages</li>
+                  <li><strong>Semantic:</strong> Provides meaning to content</li>
+                  <li><strong>Universal:</strong> Supported by all web browsers</li>
+                  <li><strong>Standards-based:</strong> Maintained by W3C</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="tutorial-section" id="elements">
+              <h2>🏗️ HTML Elements</h2>
+              <p>HTML elements are the building blocks of web pages. They consist of start tags, content, and end tags.</p>
+              
+              <div class="code-example">
+                <h4>Basic HTML Structure:</h4>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
 &lt;head&gt;
-    &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;My First Webpage&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;h1&gt;My First Heading&lt;/h1&gt;
-    &lt;p&gt;My first paragraph.&lt;/p&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;section&gt;
+            &lt;h2&gt;About HTML&lt;/h2&gt;
+            &lt;p&gt;HTML is the foundation of web development.&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2024 My Website&lt;/p&gt;
+    &lt;/footer&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-            </pre>
-            
-            <h2>Try It Yourself</h2>
-            <p>Use our online editor to practice HTML coding!</p>
+&lt;/html&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="tutorial-section" id="attributes">
+              <h2>🔧 HTML Attributes</h2>
+              <p>Attributes provide additional information about HTML elements and modify their behavior or appearance.</p>
+              
+              <div class="attribute-examples">
+                <h4>Common Attributes:</h4>
+                <ul>
+                  <li><code>id</code> - Unique identifier for an element</li>
+                  <li><code>class</code> - CSS class for styling</li>
+                  <li><code>src</code> - Source URL for images, videos, etc.</li>
+                  <li><code>href</code> - Link destination</li>
+                  <li><code>alt</code> - Alternative text for images</li>
+                </ul>
+                
+                <div class="code-example">
+                  <h5>Example:</h5>
+                  <pre><code>&lt;img src="image.jpg" alt="Description" class="responsive-image"&gt;
+&lt;a href="https://example.com" target="_blank"&gt;Visit Example&lt;/a&gt;
+&lt;div id="main-content" class="container"&gt;Content here&lt;/div&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="tutorial-section" id="forms">
+              <h2>📝 HTML Forms</h2>
+              <p>Forms allow users to input data and interact with web pages.</p>
+              
+              <div class="code-example">
+                <h4>Contact Form Example:</h4>
+                <pre><code>&lt;form action="/submit" method="POST"&gt;
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name" required&gt;
+    
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required&gt;
+    
+    &lt;label for="message"&gt;Message:&lt;/label&gt;
+    &lt;textarea id="message" name="message" rows="4"&gt;&lt;/textarea&gt;
+    
+    &lt;button type="submit"&gt;Send Message&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="tutorial-section" id="semantic">
+              <h2>🎯 Semantic HTML</h2>
+              <p>Semantic elements clearly describe their meaning in a human and machine readable way.</p>
+              
+              <div class="semantic-elements">
+                <h4>Important Semantic Elements:</h4>
+                <ul>
+                  <li><code>&lt;header&gt;</code> - Page or section header</li>
+                  <li><code>&lt;nav&gt;</code> - Navigation links</li>
+                  <li><code>&lt;main&gt;</code> - Main content area</li>
+                  <li><code>&lt;article&gt;</code> - Independent content</li>
+                  <li><code>&lt;section&gt;</code> - Thematic grouping</li>
+                  <li><code>&lt;aside&gt;</code> - Sidebar content</li>
+                  <li><code>&lt;footer&gt;</code> - Page or section footer</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="tutorial-section" id="best-practices">
+              <h2>✅ Best Practices</h2>
+              <div class="best-practices">
+                <ul>
+                  <li><strong>Use semantic elements</strong> for better accessibility and SEO</li>
+                  <li><strong>Always include DOCTYPE</strong> declaration</li>
+                  <li><strong>Validate your HTML</strong> using W3C validator</li>
+                  <li><strong>Use meaningful alt text</strong> for images</li>
+                  <li><strong>Keep your code clean</strong> and well-indented</li>
+                  <li><strong>Use lowercase</strong> for element and attribute names</li>
+                  <li><strong>Quote attribute values</strong> properly</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="tutorial-section">
+              <h2>🚀 Next Steps</h2>
+              <p>Now that you understand HTML basics, consider learning:</p>
+              <ul>
+                <li>CSS for styling your HTML</li>
+                <li>JavaScript for interactivity</li>
+                <li>Responsive web design</li>
+                <li>Web accessibility principles</li>
+              </ul>
+            </div>
+
+            <div class="tutorial-footer">
+              <p><em>This tutorial covers the fundamentals of HTML. Practice these concepts by building your own web pages!</em></p>
+            </div>
           </div>
         `);
       } else {
         setWebsiteContent(`
           <div class="tutorial-content">
-            <h1>Tutorial Content</h1>
-            <p>This is the fetched content from the website. In a real implementation, this would be the actual content from the URL.</p>
-            <p>The content would be parsed and displayed in a readable format.</p>
+            <div class="tutorial-header">
+              <h1>${currentResource.title}</h1>
+              <div class="tutorial-meta">
+                <span class="provider">By ${currentResource.provider}</span>
+                <span class="difficulty-badge">${currentResource.difficulty}</span>
+                <span class="duration">${currentResource.duration}</span>
+              </div>
+            </div>
+            
+            <div class="tutorial-section">
+              <h2>📖 Course Overview</h2>
+              <p>${currentResource.description}</p>
+            </div>
+
+            <div class="tutorial-section">
+              <h2>📚 What You'll Learn</h2>
+              <ul>
+                <li>Core concepts and fundamentals</li>
+                <li>Practical examples and exercises</li>
+                <li>Real-world applications</li>
+                <li>Best practices and industry standards</li>
+                <li>Hands-on projects</li>
+              </ul>
+            </div>
+
+            <div class="tutorial-section">
+              <h2>🎯 Learning Objectives</h2>
+              <div class="learning-objectives">
+                <p>By the end of this course, you will be able to:</p>
+                <ul>
+                  <li>Understand the fundamental concepts</li>
+                  <li>Apply knowledge to real projects</li>
+                  <li>Solve common problems effectively</li>
+                  <li>Follow industry best practices</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="tutorial-section">
+              <h2>📋 Prerequisites</h2>
+              <ul>
+                <li>Basic computer literacy</li>
+                <li>Interest in learning new skills</li>
+                <li>Access to necessary tools and software</li>
+              </ul>
+            </div>
+
+            <div class="tutorial-section">
+              <h2>🔗 Additional Resources</h2>
+              <p>Explore related materials and documentation to enhance your learning experience.</p>
+            </div>
           </div>
         `);
       }
@@ -154,7 +336,7 @@ const ResourceViewer = ({ resource, allResources, onClose, onResourceChange }: R
                 {isWebsite && websiteContent ? (
                   <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 max-h-96 overflow-y-auto">
                     <div 
-                      className="prose prose-sm dark:prose-invert max-w-none"
+                      className="prose prose-sm dark:prose-invert max-w-none [&_h1]:text-xl [&_h1]:font-bold [&_h1]:mb-4 [&_h2]:text-lg [&_h2]:font-semibold [&_h2]:mt-6 [&_h2]:mb-3 [&_h3]:text-base [&_h3]:font-medium [&_h3]:mt-4 [&_h3]:mb-2 [&_h4]:text-sm [&_h4]:font-medium [&_h4]:mt-3 [&_h4]:mb-2 [&_pre]:bg-gray-800 [&_pre]:text-gray-100 [&_pre]:p-3 [&_pre]:rounded [&_pre]:overflow-x-auto [&_pre]:text-sm [&_code]:bg-gray-200 [&_code]:dark:bg-gray-600 [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-sm [&_.tutorial-header]:mb-6 [&_.tutorial-meta]:flex [&_.tutorial-meta]:gap-3 [&_.tutorial-meta]:mt-2 [&_.difficulty-badge]:bg-blue-100 [&_.difficulty-badge]:text-blue-800 [&_.difficulty-badge]:px-2 [&_.difficulty-badge]:py-1 [&_.difficulty-badge]:rounded [&_.difficulty-badge]:text-xs [&_.tutorial-section]:mb-6 [&_.key-points]:bg-blue-50 [&_.key-points]:dark:bg-blue-900/20 [&_.key-points]:p-4 [&_.key-points]:rounded [&_.key-points]:mt-3 [&_.code-example]:bg-gray-100 [&_.code-example]:dark:bg-gray-800 [&_.code-example]:p-4 [&_.code-example]:rounded [&_.code-example]:mt-3"
                       dangerouslySetInnerHTML={{ __html: websiteContent }}
                     />
                   </div>
