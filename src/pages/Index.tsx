@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, Target, TrendingUp, Users } from "lucide-react";
@@ -61,7 +60,12 @@ const Index = () => {
                 <Button variant="ghost">Dashboard</Button>
               </Link>
               <ThemeToggle />
-              <Button>Get Started</Button>
+              <Link to="/login">
+                <Button variant="outline">Login</Button>
+              </Link>
+              <Link to="/signup">
+                <Button>Sign Up</Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -80,14 +84,16 @@ const Index = () => {
             Discover curated learning pathways that guide you from beginner to expert using the best free resources on the internet.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-            <Link to="/skills">
+            <Link to="/login">
               <Button size="lg" className="text-lg px-8 py-3">
                 Start Learning Today
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-3">
-              View All Skills
-            </Button>
+            <Link to="/skills">
+              <Button size="lg" variant="outline" className="text-lg px-8 py-3">
+                View All Skills
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -139,7 +145,7 @@ const Index = () => {
                     <span>{skill.students} students</span>
                     <span>{skill.duration}</span>
                   </div>
-                  <Link to={`/skill/${skill.id}`}>
+                  <Link to="/login">
                     <Button className="w-full group-hover:bg-blue-600 transition-colors">
                       Start Learning
                     </Button>
@@ -160,9 +166,9 @@ const Index = () => {
           <p className="text-xl mb-8 opacity-90">
             Join thousands of learners who have successfully mastered new skills and advanced their careers with SkillSprout.
           </p>
-          <Link to="/skills">
+          <Link to="/login">
             <Button size="lg" variant="secondary" className="text-lg px-8 py-3">
-              Explore All Skills
+              Get Started Now
             </Button>
           </Link>
         </div>
