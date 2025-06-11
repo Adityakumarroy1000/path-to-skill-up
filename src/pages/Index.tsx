@@ -1,10 +1,34 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpen, Target, TrendingUp, Users } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { BookOpen, Target, TrendingUp, Users, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const Index = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userProfile, setUserProfile] = useState<any>(null);
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+    const profile = localStorage.getItem("userProfile");
+    setIsLoggedIn(loggedIn);
+    if (profile) {
+      setUserProfile(JSON.parse(profile));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userProfile");
+    localStorage.removeItem("profileCompleted");
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("userName");
+    setIsLoggedIn(false);
+    setUserProfile(null);
+  };
+
   const featuredSkills = [
     {
       id: 1,
@@ -60,12 +84,32 @@ const Index = () => {
                 <Button variant="ghost">Dashboard</Button>
               </Link>
               <ThemeToggle />
-              <Link to="/login">
-                <Button variant="outline">Login</Button>
-              </Link>
-              <Link to="/signup">
-                <Button>Sign Up</Button>
-              </Link>
+              
+              {isLoggedIn && userProfile ? (
+                <div className="flex items-center space-x-2">
+                  <Avatar className="w-8 h-8">
+                    <AvatarImage src={userProfile.profileImage} />
+                    <AvatarFallback>
+                      {userProfile.firstName ? userProfile.firstName[0] : <User className="w-4 h-4" />}
+                    </AvatarFallback>
+                  </Avatar>
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">
+                    {userProfile.firstName} {userProfile.lastName}
+                  </span>
+                  <Button variant="outline" onClick={handleLogout}>
+                    Logout
+                  </Button>
+                </div>
+              ) : (
+                <>
+                  <Link to="/login">
+                    <Button variant="outline">Login</Button>
+                  </Link>
+                  <Link to="/signup">
+                    <Button>Sign Up</Button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -84,11 +128,19 @@ const Index = () => {
             Discover curated learning pathways that guide you from beginner to expert using the best free resources on the internet.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-            <Link to="/login">
-              <Button size="lg" className="text-lg px-8 py-3">
-                Start Learning Today
-              </Button>
-            </Link>
+            {isLoggedIn ? (
+              <Link to="/dashboard">
+                <Button size="lg" className="text-lg px-8 py-3">
+                  Continue Learning
+                </Button>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <Button size="lg" className="text-lg px-8 py-3">
+                  Start Learning Today
+                </Button>
+              </Link>
+            )}
             <Link to="/skills">
               <Button size="lg" variant="outline" className="text-lg px-8 py-3">
                 View All Skills
@@ -145,7 +197,7 @@ const Index = () => {
                     <span>{skill.students} students</span>
                     <span>{skill.duration}</span>
                   </div>
-                  <Link to="/login">
+                  <Link to={isLoggedIn ? "/dashboard" : "/login"}>
                     <Button className="w-full group-hover:bg-blue-600 transition-colors">
                       Start Learning
                     </Button>
@@ -166,9 +218,9 @@ const Index = () => {
           <p className="text-xl mb-8 opacity-90">
             Join thousands of learners who have successfully mastered new skills and advanced their careers with SkillSprout.
           </p>
-          <Link to="/login">
+          <Link to={isLoggedIn ? "/dashboard" : "/login"}>
             <Button size="lg" variant="secondary" className="text-lg px-8 py-3">
-              Get Started Now
+              {isLoggedIn ? "Continue Learning" : "Get Started Now"}
             </Button>
           </Link>
         </div>

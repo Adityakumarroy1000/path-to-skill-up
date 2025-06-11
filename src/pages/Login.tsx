@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -23,7 +22,14 @@ const Login = () => {
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("userEmail", email);
       setIsLoading(false);
-      navigate("/dashboard");
+      
+      // Check if profile is completed
+      const profileCompleted = localStorage.getItem("profileCompleted");
+      if (profileCompleted === "true") {
+        navigate("/dashboard");
+      } else {
+        navigate("/profile-setup");
+      }
     }, 1000);
   };
 

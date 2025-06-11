@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -42,7 +41,7 @@ const Signup = () => {
       localStorage.setItem("userEmail", formData.email);
       localStorage.setItem("userName", formData.name);
       setIsLoading(false);
-      navigate("/dashboard");
+      navigate("/profile-setup");
     }, 1000);
   };
 
