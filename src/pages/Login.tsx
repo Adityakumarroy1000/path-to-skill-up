@@ -39,23 +39,23 @@ const Login = () => {
       <div className="w-full max-w-md">
         <div className="text-center mb-8 animate-fade-in">
           <Link to="/" className="inline-flex items-center space-x-3 group">
-            <div className="text-3xl transition-transform group-hover:scale-110">🌱</div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <div className="text-3xl transition-transform group-hover:scale-110 animate-bounce">🌱</div>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-300">
               SkillSprout
             </h1>
           </Link>
         </div>
         
-        <Card className="shadow-xl border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm animate-fade-in">
+        <Card className="shadow-xl border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm animate-fade-in hover:shadow-2xl transition-all duration-500" style={{ animationDelay: '0.2s' }}>
           <CardHeader className="text-center pb-6">
-            <CardTitle className="text-2xl text-gray-900 dark:text-white">Welcome back</CardTitle>
-            <CardDescription className="text-gray-600 dark:text-gray-300">
+            <CardTitle className="text-2xl text-gray-900 dark:text-white animate-scale-in">Welcome back</CardTitle>
+            <CardDescription className="text-gray-600 dark:text-gray-300 animate-fade-in" style={{ animationDelay: '0.3s' }}>
               Sign in to your account to continue learning
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-5">
-              <div className="space-y-2">
+              <div className="space-y-2 animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 <Label htmlFor="email" className="text-gray-700 dark:text-gray-300">Email</Label>
                 <Input
                   id="email"
@@ -64,11 +64,11 @@ const Login = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="bg-white/80 dark:bg-gray-700/80 border-gray-200 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400"
+                  className="bg-white/80 dark:bg-gray-700/80 border-gray-200 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-300 focus:scale-[1.02]"
                 />
               </div>
               
-              <div className="space-y-2">
+              <div className="space-y-2 animate-fade-in" style={{ animationDelay: '0.5s' }}>
                 <Label htmlFor="password" className="text-gray-700 dark:text-gray-300">Password</Label>
                 <div className="relative">
                   <Input
@@ -78,13 +78,13 @@ const Login = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className="bg-white/80 dark:bg-gray-700/80 border-gray-200 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 pr-10"
+                    className="bg-white/80 dark:bg-gray-700/80 border-gray-200 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 pr-10 transition-all duration-300 focus:scale-[1.02]"
                   />
                   <Button
                     type="button"
                     variant="ghost"
                     size="sm"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:scale-110 transition-all duration-200"
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
@@ -98,18 +98,26 @@ const Login = () => {
               
               <Button 
                 type="submit" 
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300" 
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-fade-in" 
                 disabled={isLoading}
+                style={{ animationDelay: '0.6s' }}
               >
-                {isLoading ? "Signing in..." : "Sign in"}
+                {isLoading ? (
+                  <span className="flex items-center gap-2">
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Signing in...
+                  </span>
+                ) : (
+                  "Sign in"
+                )}
               </Button>
             </form>
             
-            <div className="mt-6 text-center text-sm">
+            <div className="mt-6 text-center text-sm animate-fade-in" style={{ animationDelay: '0.7s' }}>
               <span className="text-gray-600 dark:text-gray-400">
                 Don't have an account?{" "}
               </span>
-              <Link to="/signup" className="text-blue-600 hover:text-purple-600 hover:underline transition-colors">
+              <Link to="/signup" className="text-blue-600 hover:text-purple-600 hover:underline transition-all duration-300 hover:scale-105 inline-block">
                 Sign up
               </Link>
             </div>

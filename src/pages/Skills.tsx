@@ -221,22 +221,22 @@ const Skills = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Navigation */}
-      <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+      <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 animate-fade-in">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="text-2xl">🌱</div>
+            <Link to="/" className="flex items-center space-x-2 hover:scale-105 transition-transform duration-300">
+              <div className="text-2xl animate-pulse">🌱</div>
               <h1 className="text-xl font-bold text-gray-900 dark:text-white">SkillSprout</h1>
             </Link>
             <div className="flex items-center space-x-4">
-              <Button variant="ghost">Browse Skills</Button>
+              <Button variant="ghost" className="hover:scale-105 transition-transform duration-200">Browse Skills</Button>
               <Link to="/dashboard">
-                <Button variant="ghost">Dashboard</Button>
+                <Button variant="ghost" className="hover:scale-105 transition-transform duration-200">Dashboard</Button>
               </Link>
               <ThemeToggle />
-              <Button>Get Started</Button>
+              <Button className="hover:scale-105 transition-transform duration-200">Get Started</Button>
             </div>
           </div>
         </div>
@@ -244,8 +244,8 @@ const Skills = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <div className="text-center mb-12 animate-fade-in">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 animate-scale-in">
             Choose Your Learning Path
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -254,7 +254,7 @@ const Skills = () => {
         </div>
 
         {/* Search and Filters */}
-        <div className="mb-8">
+        <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <div className="flex gap-4 mb-6">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -263,13 +263,13 @@ const Skills = () => {
                 placeholder="Search skills..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 py-3 text-lg dark:bg-gray-800 dark:border-gray-700"
+                className="pl-10 py-3 text-lg dark:bg-gray-800 dark:border-gray-700 transition-all duration-300 focus:scale-[1.02]"
               />
             </div>
             <div className="flex items-center gap-2">
               <Filter className="w-5 h-5 text-gray-600 dark:text-gray-300" />
               <Select value={skillFilter} onValueChange={setSkillFilter}>
-                <SelectTrigger className="w-40">
+                <SelectTrigger className="w-40 hover:scale-105 transition-transform duration-200">
                   <SelectValue placeholder="Filter by level" />
                 </SelectTrigger>
                 <SelectContent>
@@ -283,12 +283,13 @@ const Skills = () => {
           </div>
 
           <div className="flex flex-wrap gap-2">
-            {categories.map((category) => (
+            {categories.map((category, index) => (
               <Button
                 key={category}
                 variant={selectedCategory === category ? "default" : "outline"}
                 onClick={() => setSelectedCategory(category)}
-                className="rounded-full"
+                className="rounded-full hover:scale-105 transition-all duration-300 animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {category}
               </Button>
@@ -298,28 +299,37 @@ const Skills = () => {
 
         {/* Skills Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSkills.map((skill) => (
-            <Card key={skill.id} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 overflow-hidden dark:bg-gray-800">
-              <div className={`h-2 bg-gradient-to-r ${skill.color}`}></div>
+          {filteredSkills.map((skill, index) => (
+            <Card 
+              key={skill.id} 
+              className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-3 border-0 overflow-hidden dark:bg-gray-800 animate-fade-in hover:rotate-1"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className={`h-2 bg-gradient-to-r ${skill.color} group-hover:h-3 transition-all duration-300`}></div>
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between mb-3">
-                  <div className="text-4xl">{skill.icon}</div>
+                  <div className="text-4xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">{skill.icon}</div>
                   <div className="flex flex-col items-end gap-1">
-                    <Badge variant="secondary">{skill.level}</Badge>
-                    <Badge variant="outline" className="text-xs">
+                    <Badge variant="secondary" className="animate-fade-in">{skill.level}</Badge>
+                    <Badge variant="outline" className="text-xs animate-fade-in" style={{ animationDelay: '0.1s' }}>
                       {skill.pathCount} paths
                     </Badge>
                   </div>
                 </div>
-                <CardTitle className="text-xl group-hover:text-blue-600 transition-colors dark:text-white">
+                <CardTitle className="text-xl group-hover:text-blue-600 transition-all duration-300 dark:text-white">
                   {skill.title}
                 </CardTitle>
-                <CardDescription className="text-gray-600 dark:text-gray-300 mb-3">
+                <CardDescription className="text-gray-600 dark:text-gray-300 mb-3 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">
                   {skill.description}
                 </CardDescription>
                 <div className="flex flex-wrap gap-1 mb-3">
-                  {skill.tags.slice(0, 3).map((tag) => (
-                    <Badge key={tag} variant="outline" className="text-xs">
+                  {skill.tags.slice(0, 3).map((tag, tagIndex) => (
+                    <Badge 
+                      key={tag} 
+                      variant="outline" 
+                      className="text-xs hover:scale-110 transition-transform duration-200 animate-fade-in"
+                      style={{ animationDelay: `${tagIndex * 0.05}s` }}
+                    >
                       {tag}
                     </Badge>
                   ))}
@@ -329,9 +339,13 @@ const Skills = () => {
                 <div className="mb-3">
                   <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">Special Features:</p>
                   <div className="space-y-1">
-                    {skill.specialFeatures.slice(0, 2).map((feature, index) => (
-                      <div key={index} className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-400">
-                        <div className="w-1 h-1 bg-green-500 rounded-full"></div>
+                    {skill.specialFeatures.slice(0, 2).map((feature, featureIndex) => (
+                      <div 
+                        key={featureIndex} 
+                        className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-400 animate-fade-in"
+                        style={{ animationDelay: `${featureIndex * 0.1}s` }}
+                      >
+                        <div className="w-1 h-1 bg-green-500 rounded-full animate-pulse"></div>
                         <span>{feature}</span>
                       </div>
                     ))}
@@ -340,22 +354,22 @@ const Skills = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1 hover:text-blue-600 transition-colors duration-200">
                     <Users className="w-4 h-4" />
                     {skill.students}
                   </div>
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1 hover:text-green-600 transition-colors duration-200">
                     <Clock className="w-4 h-4" />
                     {skill.duration}
                   </div>
-                  <div className="flex items-center gap-1">
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  <div className="flex items-center gap-1 hover:text-yellow-600 transition-colors duration-200">
+                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400 group-hover:animate-pulse" />
                     {skill.rating}
                   </div>
                   <div className="text-gray-600 dark:text-gray-300 font-medium">{skill.category}</div>
                 </div>
                 <Link to={`/skill/${skill.id}`}>
-                  <Button className="w-full group-hover:bg-blue-600 transition-colors">
+                  <Button className="w-full group-hover:bg-blue-600 transition-all duration-300 hover:scale-105 active:scale-95">
                     View Roadmap
                   </Button>
                 </Link>
@@ -365,7 +379,8 @@ const Skills = () => {
         </div>
 
         {filteredSkills.length === 0 && (
-          <div className="text-center py-12">
+          <div className="text-center py-12 animate-fade-in">
+            <div className="text-6xl mb-4 animate-bounce">🔍</div>
             <p className="text-xl text-gray-500 dark:text-gray-400">No skills found matching your search.</p>
           </div>
         )}
