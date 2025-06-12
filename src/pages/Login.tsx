@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -34,26 +35,28 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center px-4">
       <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <Link to="/" className="inline-flex items-center space-x-2">
-            <div className="text-3xl">🌱</div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">SkillSprout</h1>
+        <div className="text-center mb-8 animate-fade-in">
+          <Link to="/" className="inline-flex items-center space-x-3 group">
+            <div className="text-3xl transition-transform group-hover:scale-110">🌱</div>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              SkillSprout
+            </h1>
           </Link>
         </div>
         
-        <Card className="shadow-xl border-0">
-          <CardHeader className="text-center">
-            <CardTitle className="text-2xl">Welcome back</CardTitle>
-            <CardDescription>
+        <Card className="shadow-xl border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm animate-fade-in">
+          <CardHeader className="text-center pb-6">
+            <CardTitle className="text-2xl text-gray-900 dark:text-white">Welcome back</CardTitle>
+            <CardDescription className="text-gray-600 dark:text-gray-300">
               Sign in to your account to continue learning
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleLogin} className="space-y-4">
+            <form onSubmit={handleLogin} className="space-y-5">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-gray-700 dark:text-gray-300">Email</Label>
                 <Input
                   id="email"
                   type="email"
@@ -61,11 +64,12 @@ const Login = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  className="bg-white/80 dark:bg-gray-700/80 border-gray-200 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400"
                 />
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" className="text-gray-700 dark:text-gray-300">Password</Label>
                 <div className="relative">
                   <Input
                     id="password"
@@ -74,12 +78,13 @@ const Login = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    className="bg-white/80 dark:bg-gray-700/80 border-gray-200 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 pr-10"
                   />
                   <Button
                     type="button"
                     variant="ghost"
                     size="sm"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
@@ -91,7 +96,11 @@ const Login = () => {
                 </div>
               </div>
               
-              <Button type="submit" className="w-full" disabled={isLoading}>
+              <Button 
+                type="submit" 
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300" 
+                disabled={isLoading}
+              >
                 {isLoading ? "Signing in..." : "Sign in"}
               </Button>
             </form>
@@ -100,7 +109,7 @@ const Login = () => {
               <span className="text-gray-600 dark:text-gray-400">
                 Don't have an account?{" "}
               </span>
-              <Link to="/signup" className="text-blue-600 hover:underline">
+              <Link to="/signup" className="text-blue-600 hover:text-purple-600 hover:underline transition-colors">
                 Sign up
               </Link>
             </div>
